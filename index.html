@@ -3,262 +3,403 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal website and research portfolio.">
-  <title>Rafael Rianço-Silva | Personal Website</title>
+  <meta name="description"
+        content="Rafael Rianço-Silva — research and publications.">
+  <title>Rafael Rianço-Silva</title>
 
   <style>
     :root {
-      --background: #f7f5ef;
-      --text: #202c36;
-      --muted: #586572;
-      --accent: #245d64;
-      --line: #d8ddd8;
+      --paper: #faf8f4;
+      --ink: #253630;
+      --muted: #606c65;
+      --green: #365b48;
+      --line: #d7ddd5;
+      --soft: #e8ede5;
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      background: var(--background);
-      color: var(--text);
+      color: var(--ink);
+      background: var(--paper);
       font-family: system-ui, sans-serif;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
-    a { color: var(--accent); }
-
-    a:hover { text-decoration-thickness: 2px; }
+    a { color: var(--green); }
 
     a:focus-visible {
-      outline: 3px solid var(--accent);
+      outline: 3px solid var(--green);
       outline-offset: 5px;
     }
 
-    .container {
-      width: min(100% - 40px, 1000px);
+    .wrap {
+      width: min(1100px, calc(100% - 40px));
       margin: auto;
     }
 
-    header {
-      border-bottom: 1px solid var(--line);
-    }
+    header { border-bottom: 1px solid var(--line); }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
       flex-wrap: wrap;
-      gap: 16px;
-      padding: 24px 0;
+      padding: 22px 0;
     }
 
-    .name {
-      font-weight: 750;
+    .brand {
+      color: var(--ink);
+      font-weight: 700;
       text-decoration: none;
-      color: var(--text);
     }
 
     .nav-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 22px;
     }
 
     .nav-links a {
-      color: var(--muted);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: .9rem;
     }
 
     .hero {
-      padding: 100px 0 80px;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 70px;
+      align-items: center;
+      padding: 85px 0;
     }
 
     .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.8rem;
+      color: var(--green);
+      font-size: .78rem;
       font-weight: 700;
+      letter-spacing: .17em;
+      text-transform: uppercase;
     }
 
-    h1, h2, h3 { line-height: 1.15; }
+    h1, h2 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      line-height: 1.12;
+    }
 
     h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(3rem, 9vw, 6rem);
-      font-weight: 400;
-      letter-spacing: -0.045em;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      letter-spacing: -.04em;
       margin: 20px 0;
     }
 
-    .intro {
-      max-width: 640px;
-      font-size: 1.2rem;
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 10px 0 28px;
+    }
+
+    h3 { line-height: 1.4; }
+
+    .lead {
+      max-width: 560px;
+      font-size: 1.15rem;
       color: var(--muted);
     }
 
     .button {
       display: inline-block;
-      margin-top: 22px;
-      padding: 12px 22px;
-      background: var(--accent);
-      color: white;
-      border-radius: 6px;
+      padding: 11px 21px;
+      margin-top: 18px;
+      border: 1px solid var(--green);
+      border-radius: 3px;
       text-decoration: none;
       font-weight: 600;
     }
 
-    .button:hover { background: #19474d; }
+    .button:hover {
+      background: var(--green);
+      color: white;
+    }
+
+    .portrait {
+      margin: 0;
+      aspect-ratio: 4 / 5;
+      background: var(--soft);
+      border-radius: 150px 150px 8px 8px;
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .portrait img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .portrait-placeholder {
+      color: var(--green);
+      text-align: center;
+      padding: 30px;
+    }
 
     section {
-      padding: 55px 0;
+      padding: 65px 0;
       border-top: 1px solid var(--line);
-      scroll-margin-top: 24px;
+      scroll-margin-top: 20px;
     }
 
-    h2 {
-      font-family: Georgia, serif;
-      font-weight: 400;
-      font-size: 2.2rem;
-      margin: 0 0 24px;
-    }
-
-    .about-text {
-      max-width: 720px;
-      color: var(--muted);
-    }
-
-    .project {
+    .section-grid {
       display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 20px;
-      padding: 28px 0;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+    }
+
+    .body-copy p:first-child { margin-top: 0; }
+    .body-copy { color: var(--muted); }
+
+    .research-item {
+      padding: 25px 0;
       border-bottom: 1px solid var(--line);
     }
 
-    .project:last-child { border-bottom: 0; }
+    .research-item:first-child { padding-top: 0; }
+    .research-item:last-child { border-bottom: none; }
+    .research-item h3 { margin: 0 0 10px; }
 
-    .project-number {
-      font-family: Georgia, serif;
-      font-size: 1.6rem;
-      color: var(--accent);
+    .research-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 22px;
+      border-radius: 5px;
     }
 
-    h3 {
-      font-size: 1.25rem;
-      margin: 0 0 12px;
+    .publication-group { margin-top: 35px; }
+
+    .publication-group > h3 {
+      font-size: 1.05rem;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--green);
     }
 
-    .project p {
-      max-width: 650px;
+    .publication {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .publication h4 {
+      font-size: 1.1rem;
+      margin: 0 0 8px;
+    }
+
+    .publication p { margin: 5px 0; }
+
+    .metadata {
       color: var(--muted);
-      margin: 0;
+      font-size: .92rem;
     }
 
-    .contact-links {
+    .paper-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .contact {
+      background: var(--soft);
+      padding: 55px;
+      border-radius: 6px;
     }
 
     footer {
-      padding: 30px 0;
-      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      font-size: .85rem;
       color: var(--muted);
-      font-size: 0.85rem;
     }
 
-    @media (max-width: 600px) {
-      .hero { padding: 65px 0; }
-      .nav-links { gap: 16px; }
-      .project { grid-template-columns: 35px 1fr; }
+    @media (max-width: 760px) {
+      .hero, .section-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero { padding: 50px 0; }
+      .portrait { width: min(100%, 350px); }
+      section { padding: 45px 0; }
+      .contact { padding: 28px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <nav class="container" aria-label="Main navigation">
-      <a class="name" href="./">Rafael Rianço-Silva</a>
+    <nav class="wrap" aria-label="Main navigation">
+      <a href="./" class="brand">Rafael Rianço-Silva</a>
       <div class="nav-links">
-        <a href="#about">About me</a>
-        <a href="#research">My Research</a>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
 
-  <main class="container">
+  <main class="wrap">
     <div class="hero">
-      <!-- Replace with your field or current role. -->
-      <p class="eyebrow">Astronomy · Research · Data</p>
-      <h1>Hello, I'm<br>Rafael Rianço-Silva.</h1>
-      <p class="intro">
-        Welcome to my personal website. Here you can learn
-        about my work, explore my projects, and get in touch.
-      </p>
-      <a class="button" href="#research">Explore my work ↗</a>
+      <div>
+        <p class="eyebrow">Personal & academic website</p>
+        <h1>Rafael<br>Rianço-Silva</h1>
+        <p class="lead">
+          Welcome! Here you can explore my research,
+          publications, and the questions that inspire my work.
+        </p>
+        <a class="button" href="#about">More about me ↗</a>
+      </div>
+
+      <figure class="portrait">
+        <div class="portrait-placeholder">
+          <span aria-hidden="true">Your portrait goes here</span>
+        </div>
+
+        <!-- Upload images/rafael.jpg to display your portrait. -->
+        <img
+          src="images/rafael.jpg"
+          alt="Portrait of Rafael Rianço-Silva"
+          onerror="this.hidden=true; this.style.display='none';"
+        >
+      </figure>
     </div>
 
-    <section id="about">
-      <h2>A little about me.</h2>
-      <div class="about-text">
-        <p>
-          Introduce yourself here: your current role, where you
-          work or study, and the questions that interest you.
-        </p>
-        <p>
-          Add a few sentences about your background and what
-          you enjoy outside your work.
-        </p>
+    <section id="about" class="section-grid">
+      <div>
+        <p class="eyebrow">Introduction</p>
+        <h2>About me</h2>
       </div>
-      <!-- To add a CV, upload cv.pdf and uncomment:
-      <a class="button" href="cv.pdf">Read my CV ↗</a>
-      -->
+      <div class="body-copy">
+        <!-- Replace these paragraphs with your biography. -->
+        <p>
+          [Add your current position, institution, and a short
+          introduction to your scientific interests.]
+        </p>
+        <p>
+          [Tell visitors about your background, what brought you
+          to your research field, and a little about yourself
+          outside work.]
+        </p>
+
+        <!-- Upload cv.pdf, then remove the surrounding comment:
+        <a class="button" href="cv.pdf">Download my CV ↗</a>
+        -->
+      </div>
     </section>
 
-    <section id="research">
-      <h2>Research & projects.</h2>
+    <section id="research" class="section-grid">
+      <div>
+        <p class="eyebrow">Scientific interests</p>
+        <h2>My research</h2>
+      </div>
 
-      <!-- Replace these examples with your own projects. -->
-      <article class="project">
-        <span class="project-number" aria-hidden="true">01</span>
-        <div>
-          <h3>Your first project</h3>
-          <p>
-            Describe the question you explored, how you
-            approached it, and what you found.
+      <div>
+        <article class="research-item">
+          <h3>[Research topic or project title]</h3>
+          <p class="body-copy">
+            [Explain the scientific question, your approach,
+            and why this work matters.]
           </p>
-          <!-- Optional: add a real link to a paper or repository. -->
-        </div>
-      </article>
 
-      <article class="project">
-        <span class="project-number" aria-hidden="true">02</span>
-        <div>
-          <h3>Your second project</h3>
-          <p>
-            Introduce another piece of work, a collaboration,
-            or a tool you built.
+          <!-- To show a research image, upload the file and
+               remove the surrounding comment:
+          <img class="research-image"
+               src="images/research.jpg"
+               alt="Describe what this research figure shows"
+               loading="lazy">
+          -->
+        </article>
+
+        <article class="research-item">
+          <h3>[Another research topic]</h3>
+          <p class="body-copy">
+            [Describe another project or research interest.]
           </p>
-        </div>
-      </article>
+        </article>
+      </div>
+    </section>
+
+    <section id="publications">
+      <p class="eyebrow">Scientific work</p>
+      <h2>Publications</h2>
+
+      <!-- Replace the example entries below with real papers.
+           Duplicate an <article> block to add another paper. -->
+
+      <div class="publication-group">
+        <h3>First-author publications</h3>
+
+        <article class="publication">
+          <h4>[Paper title]</h4>
+          <p>
+            <strong>Rianço-Silva, R.</strong>, [Co-authors]
+          </p>
+          <p class="metadata">[Journal · Year · Volume / article]</p>
+          <p>[Optional: a short summary of the main result.]</p>
+
+          <!-- Add real URLs and remove the surrounding comment:
+          <div class="paper-links">
+            <a href="https://doi.org/YOUR-DOI">Paper ↗</a>
+            <a href="https://arxiv.org/abs/YOUR-ID">arXiv ↗</a>
+          </div>
+          -->
+        </article>
+      </div>
+
+      <div class="publication-group">
+        <h3>Co-authored publications</h3>
+
+        <article class="publication">
+          <h4>[Paper title]</h4>
+          <p>
+            [First author], <strong>Rianço-Silva, R.</strong>,
+            [Other authors — keep the published author order]
+          </p>
+          <p class="metadata">[Journal · Year · Volume / article]</p>
+          <p>[Optional: a short summary or your contribution.]</p>
+
+          <!-- Add a real URL and remove the surrounding comment:
+          <div class="paper-links">
+            <a href="https://doi.org/YOUR-DOI">Paper ↗</a>
+          </div>
+          -->
+        </article>
+      </div>
     </section>
 
     <section id="contact">
-      <h2>Let's connect.</h2>
-      <p>Feel free to reach out about my work or potential collaborations.</p>
-      <!-- Replace these with your real email and GitHub username. -->
-      <div class="contact-links">
-        <a href="mailto:you@example.com">Email ↗</a>
-        <a href="https://github.com/yourusername">GitHub ↗</a>
+      <div class="contact">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Contact</h2>
+        <p>[Add your institutional email and affiliation here.]</p>
+        <a href="https://github.com/rriancosilva">GitHub ↗</a>
+
+        <p><a href="mailto:rdsilva@fc.ul.pt">
+          rdsilva@fc.ul.pt
+        </a></p>
+        <p><a href="mailto:rafael.silva@ucl.ac.uk">
+          rafael.silva@ucl.ac.uk
+        </a></p>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">© Your Name</div>
-  </footer>
+  <footer class="wrap">© Rafael Rianço-Silva</footer>
 </body>
 </html>
