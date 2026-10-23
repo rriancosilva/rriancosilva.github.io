@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal website and research portfolio.">
+  <title>Rafael Rianço-Silva | Personal Website</title>
+
+  <style>
+    :root {
+      --background: #f7f5ef;
+      --text: #202c36;
+      --muted: #586572;
+      --accent: #245d64;
+      --line: #d8ddd8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); }
+
+    a:hover { text-decoration-thickness: 2px; }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: min(100% - 40px, 1000px);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 24px 0;
+    }
+
+    .name {
+      font-weight: 750;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 100px 0 80px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 { line-height: 1.15; }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(3rem, 9vw, 6rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      margin: 20px 0;
+    }
+
+    .intro {
+      max-width: 640px;
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 12px 22px;
+      background: var(--accent);
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .button:hover { background: #19474d; }
+
+    section {
+      padding: 55px 0;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 24px;
+    }
+
+    h2 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: 2.2rem;
+      margin: 0 0 24px;
+    }
+
+    .about-text {
+      max-width: 720px;
+      color: var(--muted);
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project:last-child { border-bottom: 0; }
+
+    .project-number {
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin: 0 0 12px;
+    }
+
+    .project p {
+      max-width: 650px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 65px 0; }
+      .nav-links { gap: 16px; }
+      .project { grid-template-columns: 35px 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="name" href="./">Rafael Rianço-Silva</a>
+      <div class="nav-links">
+        <a href="#about">About me</a>
+        <a href="#research">My Research</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <!-- Replace with your field or current role. -->
+      <p class="eyebrow">Astronomy · Research · Data</p>
+      <h1>Hello, I'm<br>Rafael Rianço-Silva.</h1>
+      <p class="intro">
+        Welcome to my personal website. Here you can learn
+        about my work, explore my projects, and get in touch.
+      </p>
+      <a class="button" href="#research">Explore my work ↗</a>
+    </div>
+
+    <section id="about">
+      <h2>A little about me.</h2>
+      <div class="about-text">
+        <p>
+          Introduce yourself here: your current role, where you
+          work or study, and the questions that interest you.
+        </p>
+        <p>
+          Add a few sentences about your background and what
+          you enjoy outside your work.
+        </p>
+      </div>
+      <!-- To add a CV, upload cv.pdf and uncomment:
+      <a class="button" href="cv.pdf">Read my CV ↗</a>
+      -->
+    </section>
+
+    <section id="research">
+      <h2>Research & projects.</h2>
+
+      <!-- Replace these examples with your own projects. -->
+      <article class="project">
+        <span class="project-number" aria-hidden="true">01</span>
+        <div>
+          <h3>Your first project</h3>
+          <p>
+            Describe the question you explored, how you
+            approached it, and what you found.
+          </p>
+          <!-- Optional: add a real link to a paper or repository. -->
+        </div>
+      </article>
+
+      <article class="project">
+        <span class="project-number" aria-hidden="true">02</span>
+        <div>
+          <h3>Your second project</h3>
+          <p>
+            Introduce another piece of work, a collaboration,
+            or a tool you built.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section id="contact">
+      <h2>Let's connect.</h2>
+      <p>Feel free to reach out about my work or potential collaborations.</p>
+      <!-- Replace these with your real email and GitHub username. -->
+      <div class="contact-links">
+        <a href="mailto:you@example.com">Email ↗</a>
+        <a href="https://github.com/yourusername">GitHub ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© Your Name</div>
+  </footer>
+</body>
+</html>
