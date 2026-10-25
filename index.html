@@ -902,6 +902,236 @@ a:focus-visible,
     background: var(--navy);
   }
 }
+/* MIDNIGHT BLUE · SLATE · COPPER */
+:root {
+  --navy: #101e30;
+  --paper: #f8f6f2;
+  --sand: #d7dfe5;
+  --rust: #925536;
+  --peach: #e7b995;
+  --muted: #536272;
+  --line: #c7d1da;
+}
+
+.about-photo {
+  background: #263d53;
+}
+
+.about-panel {
+  box-shadow: 0 22px 60px #101e3026;
+}
+
+.research-card {
+  background: #d7e1e9;
+  border-color: #496b87;
+}
+
+.research-card::before {
+  color: #496b87;
+}
+
+.research-card:nth-child(2) {
+  background: #e8ddd2;
+  border-color: #925536;
+}
+
+.research-card:nth-child(2)::before {
+  color: #925536;
+}
+
+.media-card {
+  background: #fffdfa;
+}
+
+a:focus-visible,
+.publications-toggle:focus-visible {
+  outline-color: #ba8158;
+}
+
+/* Small, scattered stars on the dark blue sections. */
+header,
+.publications {
+  background-color: var(--navy);
+  background-image:
+    radial-gradient(
+      circle at 23px 31px,
+      #ffffffaa 0 1px,
+      transparent 1.6px
+    ),
+    radial-gradient(
+      circle at 109px 83px,
+      #a5c9e49c 0 1.2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 61px 143px,
+      #e7b99588 0 .8px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      ellipse at 85% 15%,
+      #36567555,
+      transparent 55%
+    );
+  background-size:
+    237px 193px,
+    389px 307px,
+    173px 269px,
+    100% 100%;
+}
+
+/* Keep the opening photograph with a blue overlay. */
+.landing {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(16, 30, 48, .88) 0%,
+      rgba(16, 30, 48, .52) 25%,
+      rgba(16, 30, 48, .10) 55%
+    ),
+    url("images/Rafael-talk.jpg") center / cover no-repeat,
+    var(--navy);
+}
+
+/* PUBLICATIONS: faint orbital rings behind the content. */
+.publications {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.publications::before {
+  content: "";
+  position: absolute;
+  width: 660px;
+  height: 660px;
+  top: -360px;
+  right: -180px;
+  border: 1px solid #a5c9e426;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 65px #a5c9e40a,
+    0 0 0 130px #a5c9e408,
+    0 0 0 195px #a5c9e406;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Two panels keep the writing clear against the stars. */
+.publication-columns {
+  gap: 28px;
+  align-items: stretch;
+}
+
+.publication-column {
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid #adc5dc33;
+  border-top: 2px solid var(--peach);
+  border-radius: 12px;
+  background: rgba(16, 30, 48, .92);
+  box-shadow: 0 16px 40px #00000020;
+}
+
+.publication-column:nth-child(2) {
+  border-top-color: #92b4d0;
+}
+
+.publication-column > h3 {
+  margin-top: 0;
+}
+
+.publication-count {
+  border-color: #e7b99566;
+  background: #e7b9950d;
+}
+
+.paper-list li {
+  border-bottom-color: #adc5dc26;
+}
+
+.paper-list h4 {
+  line-height: 1.35;
+}
+
+.paper-list p {
+  color: #c5d1df;
+}
+
+.scholar-link,
+.publications-toggle {
+  border-radius: 6px;
+  background: #101e30;
+}
+
+.scholar-link:hover,
+.publications-toggle:hover {
+  background: var(--peach);
+  color: var(--navy);
+}
+
+/* MEDIA: align the bottom of Biosfera with the right column. */
+.media-grid {
+  align-items: stretch;
+}
+
+.media-card.featured {
+  align-self: stretch;
+  background: linear-gradient(135deg, #243e56, #15283d);
+  color: var(--paper);
+  border: 1px solid #425c73;
+  border-radius: 10px;
+}
+
+.media-card.featured .kicker,
+.media-card.featured .media-link {
+  color: var(--peach);
+}
+
+.media-card.featured .media-date,
+.media-card.featured .media-summary {
+  color: #d0dbe5;
+}
+
+.media-card.featured .media-link {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.media-card.featured .media-symbol {
+  border-color: var(--peach);
+  color: var(--peach);
+  background: #e7b9950d;
+}
+
+.media-card.featured .media-symbol:hover {
+  background: var(--peach);
+  color: var(--navy);
+}
+
+.media-card:not(.featured) {
+  border-radius: 8px;
+  border-left: 3px solid #7894ac;
+}
+
+/* PHONE LAYOUT */
+@media (max-width: 800px) {
+  .landing {
+    background: var(--navy);
+  }
+
+  .publication-column {
+    padding: 20px;
+  }
+
+  .publication-columns {
+    gap: 22px;
+  }
+
+  .media-card.featured {
+    min-height: auto;
+  }
+}
   </style>
 </head>
 
