@@ -890,9 +890,201 @@ a.media-symbol:hover {
           <a href="https://github.com/rriancosilva">GitHub ↗</a>
         </div>
       </div>
+/* Centre the opening text near the top. */
+.landing {
+  display: block;
+  min-height: 85svh;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(9,24,34,.85) 0%,
+      rgba(9,24,34,.55) 28%,
+      rgba(9,24,34,.12) 60%
+    ),
+    url("images/Rafael-talk.jpg") center / cover no-repeat,
+    var(--navy);
+}
+
+.landing-content {
+  width: min(1160px, calc(100% - 40px));
+  padding: 35px 0 100px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.landing h1 {
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+  margin: 15px 0;
+  line-height: 1.1;
+}
+
+.landing h1 span {
+  display: inline;
+  overflow-wrap: normal;
+}
+
+.landing-description {
+  max-width: 580px;
+  margin: 12px auto;
+  font-size: .95rem;
+}
+
+.landing-link {
+  margin-top: 12px;
+}
+
+@media (max-width: 800px) {
+  /* Keep the separate photo on phones, with text above it. */
+  .landing {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    background: var(--navy);
+  }
+
+  .landing-content {
+    order: 0;
+    padding: 30px 0;
+  }
+
+  .landing::before {
+    order: 1;
+    height: 65vw;
+    margin-bottom: 45px;
+  }
+
+  .landing h1 span {
+    display: block;
+  }
+}
+
+/* Reduce the vertical space in the right-hand press cards. */
+.media-grid {
+  gap: 14px 24px;
+  align-content: start;
+}
+
+.media-card:not(.featured) {
+  padding: 20px 24px;
+}
+
+.media-card:not(.featured) .kicker {
+  margin: 0 0 8px;
+  font-size: .65rem;
+}
+
+.media-card:not(.featured) h3 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.media-card:not(.featured) .media-date {
+  margin: 0 0 8px;
+}
+
+.media-card:not(.featured) .media-summary {
+  margin: 0 0 10px;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.media-card:not(.featured) .media-link {
+  margin-top: 0;
+  padding-top: 4px;
+  font-size: .85rem;
+}
+
+/* Also reduce the excess spacing in the television panel. */
+.media-card.featured {
+  padding: 30px;
+}
+
+.media-symbol {
+  margin: 10px 0 20px;
+}
+
+.media-card.featured h3 {
+  margin: 8px 0;
+}
+
+/* Publication expand button. */
+.paper-list li[hidden] {
+  display: none;
+}
+
+.publications-toggle {
+  display: block;
+  margin: 30px auto 0;
+  padding: 12px 22px;
+  border: 1px solid var(--peach);
+  background: transparent;
+  color: var(--peach);
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+.publications-toggle:hover {
+  background: var(--peach);
+  color: var(--navy);
+}
+
+.publications-toggle:focus-visible {
+  outline: 3px solid var(--peach);
+  outline-offset: 5px;
+}
     </section>
   </main>
 
   <footer class="wrap">© Rafael Rianço-Silva</footer>
+<script>
+  (() => {
+    const columns = document.querySelector(
+      "#publications .publication-columns"
+    );
+
+    if (!columns) return;
+
+    const lists = columns.querySelectorAll(".paper-list");
+    const extraPapers = [];
+
+    // Keep the first paper in each category visible.
+    lists.forEach((list) => {
+      Array.from(list.children).slice(1).forEach((paper) => {
+        paper.hidden = true;
+        extraPapers.push(paper);
+      });
+    });
+
+    if (extraPapers.length === 0) return;
+
+    columns.id = "publication-lists";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "publications-toggle";
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-controls", "publication-lists");
+    button.textContent =
+      `Show ${extraPapers.length} more publications ↓`;
+
+    button.addEventListener("click", () => {
+      const expanded =
+        button.getAttribute("aria-expanded") === "true";
+
+      extraPapers.forEach((paper) => {
+        paper.hidden = expanded;
+      });
+
+      button.setAttribute("aria-expanded", String(!expanded));
+      button.textContent = expanded
+        ? `Show ${extraPapers.length} more publications ↓`
+        : "Show fewer publications ↑";
+    });
+
+    columns.insertAdjacentElement("afterend", button);
+  })();
+</script>
 </body>
 </html>
