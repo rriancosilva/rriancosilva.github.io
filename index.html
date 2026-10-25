@@ -7,6 +7,7 @@
         content="Rafael Rianço-Silva — research and publications.">
   <title>Rafael Rianço-Silva</title>
 
+  <style>
   /* NEW OPENING AND ABOUT ME */
 
 .landing,
@@ -38,7 +39,7 @@
       rgba(10, 25, 36, .83),
       rgba(10, 25, 36, .30)
     ),
-    url("images/Rafael-talk.jpeg") center / cover no-repeat,
+    url("images/Rafael-talk.jpg") center / cover no-repeat,
     linear-gradient(135deg, #142936, #41626b);
 }
 
@@ -243,8 +244,7 @@
   }
 }
   
-  <style>
-    :root {
+      :root {
       --paper: #faf8f4;
       --ink: #253630;
       --muted: #606c65;
@@ -474,6 +474,107 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
     }
+/* Keep the page within the screen width. */
+body {
+  overflow-x: clip;
+}
+
+section.about-feature {
+  padding: 0 24px 90px;
+  border: 0;
+}
+
+/* Media and press */
+.media-intro {
+  max-width: 650px;
+  color: var(--muted);
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 35px;
+}
+
+.media-card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background: #fffcf7;
+  border: 1px solid var(--line);
+  border-top: 4px solid #a64d32;
+}
+
+.media-card:first-child {
+  background: #142936;
+  color: #fffaf3;
+  border-color: #142936;
+  border-top-color: #e5b999;
+}
+
+.media-type {
+  margin: 0 0 25px;
+  color: #a64d32;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.media-card h3 {
+  margin: 0 0 15px;
+  font-family: Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 400;
+}
+
+.media-details {
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+.media-summary {
+  margin-bottom: 28px;
+  color: var(--muted);
+}
+
+.media-card:first-child .media-type {
+  color: #f3d0b7;
+}
+
+.media-card:first-child .media-details,
+.media-card:first-child .media-summary {
+  color: #d3dfe3;
+}
+
+.media-link {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-bottom: 5px;
+  border-bottom: 1px solid currentColor;
+  color: #a64d32;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.media-link:hover {
+  text-decoration: underline;
+}
+
+.media-card:first-child .media-link {
+  color: #f3d0b7;
+}
+
+@media (max-width: 800px) {
+  section.about-feature {
+    padding: 0 18px 55px;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 
@@ -485,6 +586,7 @@
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
+        <a href="#media">Media &amp; press</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -520,8 +622,7 @@
     <figure class="about-photo">
       <img
         src="images/Rafael-profile_picture.jpg"
-        width="1520"
-        height="1012"
+        alt="Portrait of Rafael Rianço-Silva"
         loading="lazy"
       >
     </figure>
@@ -644,6 +745,93 @@
     </section>
 
     <section id="contact">
+    <section id="media" aria-labelledby="media-title">
+      <p class="eyebrow">Science beyond the papers</p>
+      <h2 id="media-title">Media &amp; press</h2>
+
+      <p class="media-intro">
+        Sharing research beyond the scientific community:
+        television appearances and coverage of my work.
+        All items below are in Portuguese.
+      </p>
+
+      <div class="media-grid">
+
+        <article class="media-card">
+          <p class="media-type">Television · RTP</p>
+
+          <h3>Biosfera</h3>
+
+          <p class="media-details">
+            Episode 19 ·
+            <time datetime="2024-05-18">18 May 2024</time>
+          </p>
+
+          <p class="media-summary">
+            A look at the future of space exploration,
+            including methane in Titan’s atmosphere and
+            its role in the chemistry of organic molecules.
+          </p>
+
+          <a
+            class="media-link"
+            href="https://www.rtp.pt/play/p12688/e770101/biosfera"
+          >
+            Watch the episode ↗
+          </a>
+        </article>
+
+        <article class="media-card">
+          <p class="media-type">Press release · IA</p>
+
+          <h3>Titan as a natural laboratory</h3>
+
+          <p class="media-details">
+            Instituto de Astrofísica e Ciências do Espaço ·
+            <time datetime="2024-03-07">7 March 2024</time>
+          </p>
+
+          <p class="media-summary">
+            Coverage of our identification of 97 previously
+            unresolved visible methane absorption lines on
+            Titan, and the implications for studying
+            planetary atmospheres.
+          </p>
+
+          <a
+            class="media-link"
+            href="https://divulgacao.iastro.pt/pt/2024/03/07/tita-testes-vida-fora-sistema-solar/"
+          >
+            Read the press release ↗
+          </a>
+        </article>
+
+        <article class="media-card">
+          <p class="media-type">Newspaper · Expresso</p>
+
+          <h3>Titã, o mundo fascinante e análogo à Terra primitiva</h3>
+
+          <p class="media-details">
+            Science coverage ·
+            <time datetime="2024-03-06">6 March 2024</time>
+          </p>
+
+          <p class="media-summary">
+            Newspaper coverage exploring Titan’s similarities
+            to the early Earth and its relevance to questions
+            about the origins of life.
+          </p>
+
+          <a
+            class="media-link"
+            href="https://expresso.pt/sociedade/ciencia/2024-03-06-Lua-de-Saturno-pode-explicar-a-origem-da-vida-Tita-o-mundo-fascinante-e-analogo-a-Terra-primitiva-0692f6ae"
+          >
+            Read the article ↗
+          </a>
+        </article>
+
+      </div>
+    </section>
       <div class="contact">
         <p class="eyebrow">Get in touch</p>
         <h2>Contact</h2>
