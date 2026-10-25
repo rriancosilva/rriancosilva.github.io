@@ -819,30 +819,26 @@ nav {
     html { scroll-behavior: auto; }
   }
 
-/* CONTACT LAYOUT */
+/* Envelope centred beside both addresses */
+/* CONTACT DETAILS */
 #contact .contact-details {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 26px;
+  gap: 24px;
+  width: 100%;
+  max-width: 380px;
   min-width: 0;
 }
 
-/* Envelope centred beside both addresses */
+/* Email addresses */
 #contact .contact-emails {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  max-width: 100%;
+  display: block;
+  width: 100%;
 }
 
 #contact .contact-emails > svg {
-  display: block;
-  width: 64px;
-  height: auto;
-  margin-left: 27.5px;
-  flex-shrink: 0;
-  overflow: visible;
+  display: none;
 }
 
 #contact .contact-emails > div {
@@ -851,31 +847,39 @@ nav {
 
 #contact .contact-emails a {
   display: block;
-  padding: 5px 0;
+  width: fit-content;
+  padding: 6px 0;
   color: var(--navy);
-  font-size: .95rem;
+  font-size: clamp(.95rem, 1.5vw, 1.1rem);
+  line-height: 1.6;
   text-decoration: none;
   overflow-wrap: anywhere;
 }
 
 #contact .contact-emails a:hover {
+  color: var(--rust);
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-underline-offset: 5px;
 }
 
-/* Three social icons underneath */
+/* Social profiles */
 #contact .contact-socials {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
 }
 
 #contact .contact-socials a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  width: 82px;
+  gap: 12px;
+  width: auto;
+  min-width: 0;
+  margin: 0;
   padding: 8px 0;
   color: var(--navy);
   text-align: center;
@@ -884,14 +888,14 @@ nav {
 
 #contact .contact-socials svg {
   display: block;
-  width: 27px;
-  height: 27px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
 }
 
 #contact .contact-socials span {
-  font-size: .7rem;
-  line-height: 1.35;
+  font-size: .75rem;
+  line-height: 1.4;
 }
 
 #contact .contact-socials a:hover {
