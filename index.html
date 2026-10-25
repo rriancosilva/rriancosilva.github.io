@@ -174,8 +174,9 @@ nav {
 
 .brand svg {
   display: block;
-  width: 44px;
-  height: 44px;
+  width: clamp(150px, 18vw, 220px);
+  height: auto;
+  color: var(--paper);
 }
 
 .nav-links {
@@ -824,14 +825,31 @@ nav {
   <header>
     <nav class="wrap" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Home">
-        .brand svg {
-          display: block;
-          width: clamp(150px, 18vw, 220px);
-          height: auto;
-          color: var(--paper);
-        }
+        <svg viewBox="0 0 240 64" aria-hidden="true">
+          <ellipse
+            cx="120" cy="32" rx="110" ry="22"
+            fill="none" stroke="currentColor" stroke-width="2"
+            transform="rotate(-7 120 32)"
+          />
+          <ellipse
+            cx="120" cy="32" rx="73" ry="15"
+            fill="none" stroke="currentColor" stroke-width="1.4"
+            transform="rotate(10 120 32)"
+          />
+  
+          <circle cx="25" cy="20" r="5" fill="currentColor"/>
+          <path
+            d="M25 9v22M14 20h22M17.2 12.2l15.6 15.6M32.8 12.2 17.2 27.8"
+            stroke="currentColor" stroke-width="1"
+          />
+  
+          <circle cx="76" cy="18" r="4" fill="currentColor"/>
+          <circle cx="151" cy="42" r="6" fill="currentColor"/>
+          <circle cx="159" cy="36" r="2.2" fill="currentColor"/>
+          <circle cx="207" cy="25" r="3.5" fill="currentColor"/>
+        </svg>
       </a>
-
+  
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#research">Research</a>
