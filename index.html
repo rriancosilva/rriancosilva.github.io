@@ -826,13 +826,34 @@ nav {
     <nav class="wrap" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Home">
         <svg viewBox="0 0 240 64" aria-hidden="true">
-          <!-- Planetary orbits -->
-          <g fill="none" stroke="currentColor" stroke-width="1.5">
-            <ellipse cx="120" cy="32" rx="110" ry="22"/>
-            <ellipse cx="113" cy="32" rx="75" ry="15"/>
+          <!-- Outer orbit and its planet -->
+          <g transform="rotate(-7 98 32)">
+            <ellipse
+              cx="120" cy="32" rx="110" ry="22"
+              fill="none" stroke="currentColor" stroke-width="1.5"
+            />
+            <circle cx="120" cy="10" r="4" fill="currentColor"/>
           </g>
         
-          <!-- Star: inside both orbits, slightly left of centre -->
+          <!-- Inner orbit, planet and moon -->
+          <g transform="rotate(10 98 32)">
+            <ellipse
+              cx="113" cy="32" rx="75" ry="15"
+              fill="none" stroke="currentColor" stroke-width="1.5"
+            />
+        
+            <circle cx="188" cy="32" r="5" fill="currentColor"/>
+        
+            <g transform="rotate(-25 188 32)">
+              <ellipse
+                cx="188" cy="32" rx="10" ry="8"
+                fill="none" stroke="currentColor" stroke-width=".8"
+              />
+              <circle cx="188" cy="24" r="1.8" fill="currentColor"/>
+            </g>
+          </g>
+        
+          <!-- Star -->
           <g fill="currentColor" stroke="currentColor">
             <circle cx="98" cy="32" r="5.5" stroke="none"/>
             <path
@@ -846,24 +867,6 @@ nav {
             />
           </g>
         
-          <!-- Planet exactly at the top of the outer orbit -->
-          <circle cx="120" cy="10" r="4" fill="currentColor"/>
-        
-          <!-- Planet exactly at the right end of the inner orbit -->
-          <circle cx="188" cy="32" r="5" fill="currentColor"/>
-        
-          <!-- Moon orbit around that planet -->
-          <ellipse
-            cx="188" cy="32" rx="10" ry="8"
-            fill="none" stroke="currentColor"
-            stroke-width=".8"
-            transform="rotate(-25 188 32)"
-          />
-        
-          <!-- Moon exactly on its own orbit -->
-          <g transform="rotate(-25 188 32)">
-            <circle cx="188" cy="24" r="1.8" fill="currentColor"/>
-          </g>
         </svg>
       </a>
   
