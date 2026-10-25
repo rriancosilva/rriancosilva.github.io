@@ -152,39 +152,48 @@ header,
   }
 
 /* NAVIGATION */
-  header {
-    color: var(--paper);
-  }
-  
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    padding-block: 22px;
-  }
-  
-  .brand {
-    display: none;
-  }
-  
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 22px;
-    font-size: .85rem;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: #e0e6e7;
-  }
-  
-  .nav-links a:hover {
-    color: var(--peach);
-  }
+header {
+  color: var(--paper);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding-block: 18px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.brand svg {
+  display: block;
+  width: 44px;
+  height: 44px;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: clamp(20px, 3vw, 42px);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+}
+
+.nav-links a {
+  color: #e0e6e7;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: var(--peach);
+}
 
   /* OPENING IMAGE */
   .landing {
@@ -814,7 +823,19 @@ header,
 <body>
   <header>
     <nav class="wrap" aria-label="Main navigation">
-      <a class="brand" href="./">Rafael Rianço-Silva</a>
+      <a class="brand" href="#top" aria-label="Home">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="4" fill="currentColor"/>
+          <ellipse cx="24" cy="24" rx="19" ry="8"
+                   fill="none" stroke="currentColor" stroke-width="1.4"
+                   transform="rotate(-28 24 24)"/>
+          <ellipse cx="24" cy="24" rx="15" ry="19"
+                   fill="none" stroke="currentColor" stroke-width="1.2"
+                   transform="rotate(35 24 24)"/>
+          <circle cx="8" cy="17" r="2.2" fill="var(--peach)"/>
+          <circle cx="37" cy="29" r="2" fill="var(--peach)"/>
+        </svg>
+      </a>
 
       <div class="nav-links">
         <a href="#about">About</a>
