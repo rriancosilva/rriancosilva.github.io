@@ -4,291 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-        content="Rafael Rianço-Silva — research and publications.">
+        content="Rafael Rianço-Silva — research, publications, and media.">
   <title>Rafael Rianço-Silva</title>
 
   <style>
-  /* NEW OPENING AND ABOUT ME */
-
-.landing,
-.about-feature {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-}
-
-.landing {
-  position: relative;
-  min-height: 85svh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  isolation: isolate;
-  background: #142936;
-  color: #fffaf3;
-}
-
-/* Replace images/background.jpg with your chosen background. */
-.landing::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(10, 25, 36, .83),
-      rgba(10, 25, 36, .30)
-    ),
-    url("images/Rafael-talk.jpg") center / cover no-repeat,
-    linear-gradient(135deg, #142936, #41626b);
-}
-
-.landing::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    to top,
-    rgba(10, 25, 36, .55),
-    transparent 45%
-  );
-}
-
-.landing-content {
-  width: min(1100px, calc(100% - 48px));
-  margin: auto;
-  padding: 95px 0 120px;
-}
-
-.landing-label {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: #f3d0b7;
-}
-
-.landing-label::before {
-  content: "";
-  width: 45px;
-  height: 1px;
-  background: currentColor;
-}
-
-.landing h1 {
-  max-width: 950px;
-  margin: 32px 0;
-  font-family: Georgia, serif;
-  font-size: clamp(3.2rem, 8vw, 7.5rem);
-  font-weight: 400;
-  line-height: .98;
-  letter-spacing: -.055em;
-}
-
-.landing h1 span {
-  display: block;
-  color: #f3d0b7;
-}
-
-.landing-description {
-  max-width: 460px;
-  color: #e0e6e7;
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
-
-.landing-link {
-  display: inline-flex;
-  gap: 30px;
-  align-items: center;
-  margin-top: 28px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #f3d0b7;
-  color: #fffaf3;
-  text-decoration: none;
-}
-
-.landing-link span {
-  transition: transform .2s ease;
-}
-
-.landing-link:hover span {
-  transform: translateY(4px);
-}
-
-.about-feature {
-  position: relative;
-  padding: 0 24px 90px;
-  border: 0;
-  background: #e9dfd2;
-  scroll-margin-top: 30px;
-}
-
-.about-layout {
-  position: relative;
-  top: -42px;
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  max-width: 1200px;
-  margin: 0 auto -42px;
-  background: #fffcf7;
-  box-shadow: 0 22px 65px rgba(24, 39, 45, .12);
-}
-
-.about-photo {
-  position: relative;
-  align-self: start;
-  margin: 0;
-  background: #142936;
-}
-
-.about-photo img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* A caption over the bottom of the photo. */
-.about-photo figcaption {
-  position: absolute;
-  inset: auto 0 0;
-  padding: 45px 25px 20px;
-  color: white;
-  background: linear-gradient(transparent, rgba(0, 0, 0, .75));
-  font-size: .8rem;
-  letter-spacing: .04em;
-}
-
-.about-content {
-  padding: clamp(30px, 4vw, 65px);
-}
-
-.about-kicker {
-  margin: 0 0 20px;
-  color: #a64d32;
-  font-size: .73rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .18em;
-}
-
-.about-content h2 {
-  margin: 0 0 28px;
-  color: #142936;
-  font-family: Georgia, serif;
-  font-size: clamp(2.6rem, 5vw, 4.5rem);
-  font-weight: 400;
-  letter-spacing: -.045em;
-}
-
-.about-content h2 em {
-  color: #a64d32;
-  font-weight: 400;
-}
-
-.about-content p:not(.about-kicker) {
-  color: #53616a;
-  font-size: 1rem;
-  line-height: 1.85;
-}
-
-.about-content .about-intro {
-  color: #142936 !important;
-  font-size: 1.2rem !important;
-}
-
-.about-action {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
-  background: #142936;
-  color: #fffaf3;
-  text-decoration: none;
-  border: 1px solid #142936;
-}
-
-.about-action:hover {
-  background: #a64d32;
-  border-color: #a64d32;
-}
-
-@media (max-width: 800px) {
-  .landing {
-    min-height: 75svh;
-  }
-
-  .landing-content {
-    padding: 75px 0 100px;
-  }
-
-  .about-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .about-feature {
-    padding: 0 18px 55px;
-  }
-
-  .about-content {
-    padding: 35px 26px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .landing-link span {
-    transition: none;
-  }
-}
-  
-      :root {
-      --paper: #faf8f4;
-      --ink: #253630;
-      --muted: #606c65;
-      --green: #365b48;
-      --line: #d7ddd5;
-      --soft: #e8ede5;
+    :root {
+      --navy: #142936;
+      --paper: #faf7f1;
+      --sand: #e9dfd2;
+      --rust: #a3472c;
+      --peach: #f3c7a6;
+      --muted: #56616a;
+      --line: #d9d3ca;
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      color: var(--ink);
       background: var(--paper);
+      color: var(--navy);
       font-family: system-ui, sans-serif;
       line-height: 1.75;
     }
 
-    a { color: var(--green); }
+    a { color: inherit; }
 
     a:focus-visible {
-      outline: 3px solid var(--green);
-      outline-offset: 5px;
+      outline: 3px solid #c26a46;
+      outline-offset: 6px;
     }
+
+    img { max-width: 100%; }
 
     .wrap {
-      width: min(1100px, calc(100% - 40px));
-      margin: auto;
+      width: min(1160px, calc(100% - 40px));
+      margin-inline: auto;
     }
 
-    header { border-bottom: 1px solid var(--line); }
+    header {
+      background: var(--navy);
+      color: var(--paper);
+    }
 
     nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      justify-content: space-between;
       flex-wrap: wrap;
-      padding: 22px 0;
+      gap: 18px;
+      padding-block: 22px;
     }
 
     .brand {
-      color: var(--ink);
       font-weight: 700;
       text-decoration: none;
     }
@@ -297,291 +67,381 @@
       display: flex;
       flex-wrap: wrap;
       gap: 22px;
+      font-size: .85rem;
     }
 
     .nav-links a {
       text-decoration: none;
-      font-size: .9rem;
+      color: #e0e6e7;
     }
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 70px;
-      align-items: center;
-      padding: 85px 0;
-    }
+    .nav-links a:hover { color: var(--peach); }
 
-    .eyebrow {
-      color: var(--green);
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .17em;
-      text-transform: uppercase;
-    }
+    h1, h2, h3, h4 { line-height: 1.15; }
 
     h1, h2 {
       font-family: Georgia, serif;
       font-weight: 400;
-      line-height: 1.12;
-    }
-
-    h1 {
-      font-size: clamp(2.7rem, 6vw, 5rem);
-      letter-spacing: -.04em;
-      margin: 20px 0;
+      letter-spacing: -.045em;
     }
 
     h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin: 10px 0 28px;
+      font-size: clamp(2.7rem, 5vw, 4.5rem);
+      margin: 12px 0 30px;
     }
 
-    h3 { line-height: 1.4; }
+    .kicker {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--rust);
+    }
 
-    .lead {
-      max-width: 560px;
-      font-size: 1.15rem;
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .section-heading > p {
+      max-width: 330px;
       color: var(--muted);
     }
 
+    section { scroll-margin-top: 25px; }
+
     .button {
-      display: inline-block;
-      padding: 11px 21px;
-      margin-top: 18px;
-      border: 1px solid var(--green);
-      border-radius: 3px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .button:hover {
-      background: var(--green);
+      display: inline-flex;
+      align-items: center;
+      gap: 25px;
+      padding: 12px 20px;
+      background: var(--navy);
       color: white;
+      text-decoration: none;
+      font-size: .9rem;
     }
 
-    .portrait {
-      margin: 0;
-      aspect-ratio: 4 / 5;
-      background: var(--soft);
-      border-radius: 150px 150px 8px 8px;
-      overflow: hidden;
+    .button:hover { background: var(--rust); }
+
+    /* OPENING BACKGROUND: your talk photo */
+    .landing {
+      min-height: 82svh;
+      display: grid;
+      align-items: center;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(9,24,34,.86), rgba(9,24,34,.28)),
+        url("images/Rafael-talk.jpg") center / cover no-repeat,
+        var(--navy);
+    }
+
+    .landing-content { padding-block: 90px 135px; }
+
+    .landing .kicker { color: var(--peach); }
+
+    .landing h1 {
+      font-size: clamp(3rem, 8vw, 7.5rem);
+      margin: 26px 0;
+      line-height: 1;
+    }
+
+    .landing h1 span {
+      display: block;
+      color: var(--peach);
+    }
+
+    .landing-description {
+      max-width: 440px;
+      color: #e6ebec;
+      font-size: 1.05rem;
+    }
+
+    .landing-link {
+      display: inline-block;
+      margin-top: 25px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--peach);
+      text-decoration: none;
+    }
+
+    /* ABOUT ME */
+    .about {
+      padding-bottom: 85px;
+      background: var(--sand);
+    }
+
+    .about-panel {
       position: relative;
+      top: -45px;
+      margin-bottom: -45px;
       display: grid;
-      place-items: center;
+      grid-template-columns: .9fr 1.1fr;
+      background: var(--paper);
+      box-shadow: 0 22px 60px #1429361a;
     }
 
-    .portrait img {
-      position: absolute;
+    .about-photo {
+      margin: 0;
+      background: #d6c6b5;
+    }
+
+    .about-photo img {
+      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
     }
 
-    .portrait-placeholder {
-      color: var(--green);
-      text-align: center;
-      padding: 30px;
+    .about-copy { padding: clamp(28px, 5vw, 65px); }
+
+    .about-copy h2 em {
+      color: var(--rust);
+      font-weight: 400;
     }
 
-    section {
-      padding: 65px 0;
-      border-top: 1px solid var(--line);
-      scroll-margin-top: 20px;
+    .about-copy p:not(.kicker) { color: var(--muted); }
+
+    .about-copy .intro {
+      color: var(--navy);
+      font-size: 1.2rem;
     }
 
-    .section-grid {
+    /* RESEARCH */
+    .research { padding-block: 85px; }
+
+    .research-grid {
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 60px;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+      counter-reset: research;
     }
 
-    .body-copy p:first-child { margin-top: 0; }
-    .body-copy { color: var(--muted); }
-
-    .research-item {
-      padding: 25px 0;
-      border-bottom: 1px solid var(--line);
+    .research-card {
+      position: relative;
+      padding: 38px;
+      background: var(--sand);
+      border-bottom: 4px solid var(--rust);
+      counter-increment: research;
     }
 
-    .research-item:first-child { padding-top: 0; }
-    .research-item:last-child { border-bottom: none; }
-    .research-item h3 { margin: 0 0 10px; }
+    .research-card::before {
+      content: "0" counter(research);
+      display: block;
+      margin-bottom: 45px;
+      color: var(--rust);
+      font-family: Georgia, serif;
+      font-size: 3.5rem;
+      line-height: 1;
+    }
+
+    .research-card:nth-child(2) {
+      background: #e2e9e5;
+      border-color: #385e54;
+    }
+
+    .research-card:nth-child(2)::before { color: #385e54; }
+
+    .research-card h3 {
+      font-family: Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin: 0 0 20px;
+    }
+
+    .research-card p { color: var(--muted); }
 
     .research-image {
       display: block;
       width: 100%;
       height: auto;
-      margin-top: 22px;
-      border-radius: 5px;
+      margin-top: 24px;
     }
 
-    .publication-group { margin-top: 35px; }
+    /* PUBLICATIONS */
+    .publications {
+      background: var(--navy);
+      color: var(--paper);
+      padding-block: 85px;
+    }
+
+    .publications .kicker { color: var(--peach); }
+
+    .publication-group {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: 45px;
+      padding-block: 35px;
+      border-top: 1px solid #ffffff30;
+    }
 
     .publication-group > h3 {
-      font-size: 1.05rem;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--green);
+      margin: 0;
+      color: var(--peach);
+      font-size: 1rem;
+      font-weight: 500;
     }
 
-    .publication {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--line);
+    .paper + .paper {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid #ffffff25;
     }
 
-    .publication h4 {
-      font-size: 1.1rem;
-      margin: 0 0 8px;
+    .paper h4 {
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin: 0 0 15px;
     }
 
-    .publication p { margin: 5px 0; }
-
-    .metadata {
-      color: var(--muted);
-      font-size: .92rem;
+    .paper p {
+      color: #cad5da;
+      margin: 8px 0;
+      font-size: .95rem;
     }
 
     .paper-links {
       display: flex;
-      gap: 18px;
-      margin-top: 12px;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 18px;
+      color: var(--peach);
     }
 
+    /* MEDIA AND PRESS */
+    .media { padding-block: 85px; }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+    }
+
+    .media-card {
+      padding: 32px;
+      border: 1px solid var(--line);
+      background: #fffdf9;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .media-card.featured {
+      grid-row: span 2;
+      background: #e9dfd2;
+      border: 0;
+      padding: 40px;
+    }
+
+    .media-symbol {
+      display: grid;
+      place-items: center;
+      width: 80px;
+      height: 80px;
+      margin: 15px 0 35px;
+      border: 1px solid var(--rust);
+      border-radius: 50%;
+      color: var(--rust);
+      font-size: 1.6rem;
+    }
+
+    .media-card h3 {
+      font-family: Georgia, serif;
+      font-size: 1.65rem;
+      font-weight: 400;
+      margin: 12px 0;
+    }
+
+    .media-card.featured h3 {
+      font-size: clamp(3rem, 5vw, 4rem);
+    }
+
+    .media-date {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .media-summary { color: var(--muted); }
+
+    .media-link {
+      display: inline-block;
+      margin-top: auto;
+      padding-top: 20px;
+      color: var(--rust);
+      text-underline-offset: 6px;
+      font-weight: 600;
+    }
+
+    /* CONTACT */
     .contact {
-      background: var(--soft);
-      padding: 55px;
-      border-radius: 6px;
+      background: var(--sand);
+      padding-block: 65px;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .contact-links a {
+      display: block;
+      width: fit-content;
+      margin: 15px 0;
+      text-underline-offset: 6px;
+      overflow-wrap: anywhere;
     }
 
     footer {
-      padding: 28px 0;
-      font-size: .85rem;
+      padding-block: 25px;
+      font-size: .8rem;
       color: var(--muted);
     }
 
-    @media (max-width: 760px) {
-      .hero, .section-grid {
+    @media (max-width: 800px) {
+      .about-panel,
+      .research-grid,
+      .publication-group,
+      .media-grid,
+      .contact-layout {
         grid-template-columns: 1fr;
-        gap: 30px;
       }
 
-      .hero { padding: 50px 0; }
-      .portrait { width: min(100%, 350px); }
-      section { padding: 45px 0; }
-      .contact { padding: 28px; }
+      .section-heading {
+        display: block;
+      }
+
+      .media-card.featured { grid-row: auto; }
+
+      .landing-content { padding-block: 65px 110px; }
+
+      .publication-group { gap: 20px; }
+
+      .research, .publications, .media {
+        padding-block: 55px;
+      }
+
+      .research-card, .media-card, .media-card.featured {
+        padding: 28px;
+      }
+
+      .nav-links { gap: 14px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
     }
-/* Keep the page within the screen width. */
-body {
-  overflow-x: clip;
-}
-
-section.about-feature {
-  padding: 0 24px 90px;
-  border: 0;
-}
-
-/* Media and press */
-.media-intro {
-  max-width: 650px;
-  color: var(--muted);
-}
-
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 35px;
-}
-
-.media-card {
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-  background: #fffcf7;
-  border: 1px solid var(--line);
-  border-top: 4px solid #a64d32;
-}
-
-.media-card:first-child {
-  background: #142936;
-  color: #fffaf3;
-  border-color: #142936;
-  border-top-color: #e5b999;
-}
-
-.media-type {
-  margin: 0 0 25px;
-  color: #a64d32;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.media-card h3 {
-  margin: 0 0 15px;
-  font-family: Georgia, serif;
-  font-size: 1.65rem;
-  font-weight: 400;
-}
-
-.media-details {
-  font-size: .85rem;
-  color: var(--muted);
-}
-
-.media-summary {
-  margin-bottom: 28px;
-  color: var(--muted);
-}
-
-.media-card:first-child .media-type {
-  color: #f3d0b7;
-}
-
-.media-card:first-child .media-details,
-.media-card:first-child .media-summary {
-  color: #d3dfe3;
-}
-
-.media-link {
-  align-self: flex-start;
-  margin-top: auto;
-  padding-bottom: 5px;
-  border-bottom: 1px solid currentColor;
-  color: #a64d32;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.media-link:hover {
-  text-decoration: underline;
-}
-
-.media-card:first-child .media-link {
-  color: #f3d0b7;
-}
-
-@media (max-width: 800px) {
-  section.about-feature {
-    padding: 0 18px 55px;
-  }
-
-  .media-grid {
-    grid-template-columns: 1fr;
-  }
-}
   </style>
 </head>
 
 <body>
   <header>
     <nav class="wrap" aria-label="Main navigation">
-      <a href="./" class="brand">Rafael Rianço-Silva</a>
+      <a class="brand" href="./">Rafael Rianço-Silva</a>
+
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#research">Research</a>
@@ -592,258 +452,223 @@ section.about-feature {
     </nav>
   </header>
 
-  <main class="wrap">
-    <!-- OPENING: a separate background photograph -->
-<div class="landing">
-  <div class="landing-content">
-    <p class="landing-label">Research · Discovery · Curiosity</p>
+  <main>
+    <div class="landing">
+      <div class="wrap landing-content">
+        <p class="kicker">Research · Discovery · Curiosity</p>
+        <h1>Rafael <span>Rianço-Silva</span></h1>
 
-    <h1>
-      Rafael
-      <span>Rianço-Silva</span>
-    </h1>
+        <p class="landing-description">
+          Explore my research, publications, and the
+          questions that inspire my work.
+        </p>
 
-    <p class="landing-description">
-      Welcome to my corner of the web.
-      Explore my research, publications, and the person
-      behind the work.
-    </p>
-
-    <a href="#about" class="landing-link">
-      A little about me <span aria-hidden="true">↓</span>
-    </a>
-  </div>
-</div>
-
-<!-- ABOUT ME: your talk photo and biography -->
-<section id="about" class="about-feature" aria-labelledby="about-title">
-  <div class="about-layout">
-
-    <figure class="about-photo">
-      <img
-        src="images/Rafael-profile_picture.jpg"
-        alt="Portrait of Rafael Rianço-Silva"
-        loading="lazy"
-      >
-    </figure>
-
-    <div class="about-content">
-      <p class="about-kicker">The person behind the research</p>
-
-      <h2 id="about-title">A little <em>about me.</em></h2>
-
-      <!-- Replace these placeholders with your biography. -->
-      <p class="about-intro">
-        Hi, I’m Rafael! [Introduce your current role and
-        where you work or study.]
-      </p>
-
-      <p>
-        [Describe your research interests in your own words:
-        what questions fascinate you, what you study, and
-        what you enjoy about your work.]
-      </p>
-
-      <p>
-        [Add something more personal: where you grew up,
-        how you arrived here, or what you enjoy outside research.]
-      </p>
-
-      <a href="#research" class="about-action">
-        Explore my research ↗
-      </a>
-
-      <!-- Once you upload cv.pdf to the repository's main folder,
-           you can replace the button above with:
-      <a href="cv.pdf" class="about-action">
-        Download my CV ↗
-      </a>
-      -->
+        <a class="landing-link" href="#about">Meet the researcher ↓</a>
+      </div>
     </div>
 
-  </div>
-</section>
+    <section id="about" class="about" aria-labelledby="about-title">
+      <div class="wrap about-panel">
+        <figure class="about-photo">
+          <img
+            src="images/Rafael-profile_picture.jpg"
+            alt="Portrait of Rafael Rianço-Silva"
+            loading="lazy"
+          >
+        </figure>
 
-    <section id="research" class="section-grid">
-      <div>
-        <p class="eyebrow">Scientific interests</p>
-        <h2>My research</h2>
-      </div>
+        <div class="about-copy">
+          <p class="kicker">01 / About me</p>
+          <h2 id="about-title">Hello, <em>I’m Rafael.</em></h2>
 
-      <div>
-        <article class="research-item">
-          <h3>[Research topic or project title]</h3>
-          <p class="body-copy">
-            [Explain the scientific question, your approach,
-            and why this work matters.]
+          <p class="intro">
+            [Introduce your current role and institution here.]
           </p>
 
-          <!-- To show a research image, upload the file and
-               remove the surrounding comment:
-          <img class="research-image"
-               src="images/research.jpg"
-               alt="Describe what this research figure shows"
-               loading="lazy">
-          -->
-        </article>
-
-        <article class="research-item">
-          <h3>[Another research topic]</h3>
-          <p class="body-copy">
-            [Describe another project or research interest.]
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="publications">
-      <p class="eyebrow">Scientific work</p>
-      <h2>Publications</h2>
-
-      <!-- Replace the example entries below with real papers.
-           Duplicate an <article> block to add another paper. -->
-
-      <div class="publication-group">
-        <h3>First-author publications</h3>
-
-        <article class="publication">
-          <h4>[Paper title]</h4>
           <p>
-            <strong>Rianço-Silva, R.</strong>, [Co-authors]
+            [Describe your research interests and the questions
+            that motivate your work.]
           </p>
-          <p class="metadata">[Journal · Year · Volume / article]</p>
-          <p>[Optional: a short summary of the main result.]</p>
 
-          <!-- Add real URLs and remove the surrounding comment:
-          <div class="paper-links">
-            <a href="https://doi.org/YOUR-DOI">Paper ↗</a>
-            <a href="https://arxiv.org/abs/YOUR-ID">arXiv ↗</a>
-          </div>
-          -->
-        </article>
-      </div>
-
-      <div class="publication-group">
-        <h3>Co-authored publications</h3>
-
-        <article class="publication">
-          <h4>[Paper title]</h4>
           <p>
-            [First author], <strong>Rianço-Silva, R.</strong>,
-            [Other authors — keep the published author order]
+            [Share a little about your background and what
+            you enjoy outside research.]
           </p>
-          <p class="metadata">[Journal · Year · Volume / article]</p>
-          <p>[Optional: a short summary or your contribution.]</p>
 
-          <!-- Add a real URL and remove the surrounding comment:
-          <div class="paper-links">
-            <a href="https://doi.org/YOUR-DOI">Paper ↗</a>
-          </div>
+          <a class="button" href="#research">Explore my research ↗</a>
+
+          <!-- To add your CV, upload cv.pdf to the main repository
+               folder, then remove the comment markers around:
+          <p><a class="button" href="cv.pdf">Download my CV ↗</a></p>
           -->
-        </article>
+        </div>
       </div>
     </section>
 
-    <section id="contact">
-    <section id="media" aria-labelledby="media-title">
-      <p class="eyebrow">Science beyond the papers</p>
-      <h2 id="media-title">Media &amp; press</h2>
+    <section id="research" class="research">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">02 / Scientific interests</p>
+            <h2>My research</h2>
+          </div>
+          <p>The questions, methods, and projects behind my work.</p>
+        </div>
 
-      <p class="media-intro">
-        Sharing research beyond the scientific community:
-        television appearances and coverage of my work.
-        All items below are in Portuguese.
-      </p>
+        <div class="research-grid">
+          <article class="research-card">
+            <h3>[Research topic or project title]</h3>
+            <p>
+              [Describe the question you are investigating,
+              your approach, and why it matters.]
+            </p>
 
-      <div class="media-grid">
+            <!-- Optional research image:
+            <img class="research-image"
+                 src="images/research.jpg"
+                 alt="Describe your research figure"
+                 loading="lazy">
+            -->
+          </article>
 
-        <article class="media-card">
-          <p class="media-type">Television · RTP</p>
-
-          <h3>Biosfera</h3>
-
-          <p class="media-details">
-            Episode 19 ·
-            <time datetime="2024-05-18">18 May 2024</time>
-          </p>
-
-          <p class="media-summary">
-            A look at the future of space exploration,
-            including methane in Titan’s atmosphere and
-            its role in the chemistry of organic molecules.
-          </p>
-
-          <a
-            class="media-link"
-            href="https://www.rtp.pt/play/p12688/e770101/biosfera"
-          >
-            Watch the episode ↗
-          </a>
-        </article>
-
-        <article class="media-card">
-          <p class="media-type">Press release · IA</p>
-
-          <h3>Titan as a natural laboratory</h3>
-
-          <p class="media-details">
-            Instituto de Astrofísica e Ciências do Espaço ·
-            <time datetime="2024-03-07">7 March 2024</time>
-          </p>
-
-          <p class="media-summary">
-            Coverage of our identification of 97 previously
-            unresolved visible methane absorption lines on
-            Titan, and the implications for studying
-            planetary atmospheres.
-          </p>
-
-          <a
-            class="media-link"
-            href="https://divulgacao.iastro.pt/pt/2024/03/07/tita-testes-vida-fora-sistema-solar/"
-          >
-            Read the press release ↗
-          </a>
-        </article>
-
-        <article class="media-card">
-          <p class="media-type">Newspaper · Expresso</p>
-
-          <h3>Titã, o mundo fascinante e análogo à Terra primitiva</h3>
-
-          <p class="media-details">
-            Science coverage ·
-            <time datetime="2024-03-06">6 March 2024</time>
-          </p>
-
-          <p class="media-summary">
-            Newspaper coverage exploring Titan’s similarities
-            to the early Earth and its relevance to questions
-            about the origins of life.
-          </p>
-
-          <a
-            class="media-link"
-            href="https://expresso.pt/sociedade/ciencia/2024-03-06-Lua-de-Saturno-pode-explicar-a-origem-da-vida-Tita-o-mundo-fascinante-e-analogo-a-Terra-primitiva-0692f6ae"
-          >
-            Read the article ↗
-          </a>
-        </article>
-
+          <article class="research-card">
+            <h3>[Another research topic]</h3>
+            <p>
+              [Introduce another project, method,
+              or scientific interest.]
+            </p>
+          </article>
+        </div>
       </div>
     </section>
-      <div class="contact">
-        <p class="eyebrow">Get in touch</p>
-        <h2>Contact</h2>
-        <p>[Add your institutional email and affiliation here.]</p>
-        <a href="https://github.com/rriancosilva">GitHub ↗</a>
 
-        <p><a href="mailto:rdsilva@fc.ul.pt">
-          rdsilva@fc.ul.pt
-        </a></p>
-        <p><a href="mailto:rafael.silva@ucl.ac.uk">
-          rafael.silva@ucl.ac.uk
-        </a></p>
+    <section id="publications" class="publications">
+      <div class="wrap">
+        <p class="kicker">03 / Published work</p>
+        <h2>Publications</h2>
+
+        <div class="publication-group">
+          <h3>First-author publications</h3>
+          <div>
+            <!-- Copy a complete article block to add another paper. -->
+            <article class="paper">
+              <h4>[Paper title]</h4>
+              <p><strong>Rianço-Silva, R.</strong>, [Co-authors]</p>
+              <p>[Journal · Year · Volume / article]</p>
+              <p>[A short description of the main result.]</p>
+
+              <!-- Add real links and remove the comment markers:
+              <div class="paper-links">
+                <a href="https://doi.org/YOUR-DOI">Paper ↗</a>
+                <a href="https://arxiv.org/abs/YOUR-ID">arXiv ↗</a>
+              </div>
+              -->
+            </article>
+          </div>
+        </div>
+
+        <div class="publication-group">
+          <h3>Co-authored publications</h3>
+          <div>
+            <article class="paper">
+              <h4>[Paper title]</h4>
+              <p>[Authors in their published order, including your name]</p>
+              <p>[Journal · Year · Volume / article]</p>
+              <p>[A short description of the work or your contribution.]</p>
+
+              <!-- Add a real link and remove the comment markers:
+              <div class="paper-links">
+                <a href="https://doi.org/YOUR-DOI">Paper ↗</a>
+              </div>
+              -->
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="media" class="media" aria-labelledby="media-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">04 / Beyond the papers</p>
+            <h2 id="media-title">Media &amp; press</h2>
+          </div>
+          <p>
+            Television appearances and coverage of my work.
+            These features are in Portuguese.
+          </p>
+        </div>
+
+        <div class="media-grid">
+          <article class="media-card featured">
+            <p class="kicker">On television · RTP</p>
+            <div class="media-symbol" aria-hidden="true">▶</div>
+            <h3>Biosfera</h3>
+            <p class="media-date">
+              Episode 19 ·
+              <time datetime="2024-05-18">18 May 2024</time>
+            </p>
+            <p class="media-summary">
+              Exploring the future of space exploration,
+              methane in Titan’s atmosphere, and the chemistry
+              that produces organic molecules.
+            </p>
+            <a class="media-link"
+               href="https://www.rtp.pt/play/p12688/e770101/biosfera">
+              Watch the episode on RTP ↗
+            </a>
+          </article>
+
+          <article class="media-card">
+            <p class="kicker">Press release · IA</p>
+            <h3>Titan as a natural laboratory</h3>
+            <p class="media-date">
+              <time datetime="2024-03-07">7 March 2024</time>
+            </p>
+            <p class="media-summary">
+              The Instituto de Astrofísica e Ciências do Espaço
+              shares our research on methane signatures in
+              Titan’s atmosphere.
+            </p>
+            <a class="media-link"
+               href="https://divulgacao.iastro.pt/pt/2024/03/07/tita-testes-vida-fora-sistema-solar/">
+              Read the press release ↗
+            </a>
+          </article>
+
+          <article class="media-card">
+            <p class="kicker">In the news · Expresso</p>
+            <h3 lang="pt">Titã, o mundo fascinante e análogo à Terra primitiva</h3>
+            <p class="media-date">
+              <time datetime="2024-03-06">6 March 2024</time>
+            </p>
+            <p class="media-summary">
+              Titan, the early Earth, and questions about
+              the origins of life.
+            </p>
+            <a class="media-link"
+               href="https://expresso.pt/sociedade/ciencia/2024-03-06-Lua-de-Saturno-pode-explicar-a-origem-da-vida-Tita-o-mundo-fascinante-e-analogo-a-Terra-primitiva-0692f6ae">
+              Read the article ↗
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap contact-layout">
+        <div>
+          <p class="kicker">05 / Get in touch</p>
+          <h2>Let’s talk.</h2>
+          <p>For research, collaborations, or a conversation about science.</p>
+        </div>
+
+        <div class="contact-links">
+          <a href="mailto:rdsilva@fc.ul.pt">rdsilva@fc.ul.pt ↗</a>
+          <a href="mailto:rafael.silva@ucl.ac.uk">rafael.silva@ucl.ac.uk ↗</a>
+          <a href="https://github.com/rriancosilva">GitHub ↗</a>
+        </div>
       </div>
     </section>
   </main>
