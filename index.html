@@ -28,8 +28,11 @@
   --line: #c7d1da;
 }
 
-  /* GENERAL */
-  * { box-sizing: border-box; }
+  /* GENERAL & CUSTOM ARIEL CURSOR */
+  * { 
+    box-sizing: border-box; 
+    cursor: url('images/ariel.webp') 16 16, auto !important;
+  }
   html { scroll-behavior: smooth; }
 
   body {
@@ -38,9 +41,13 @@
     color: var(--navy);
     font-family: system-ui, sans-serif;
     line-height: 1.75;
+    cursor: url('images/ariel.webp') 16 16, auto;
   }
 
-  a { color: inherit; }
+  a, button, .button, .scholar-link, .publications-toggle, .media-link { 
+    color: inherit; 
+    cursor: url('images/ariel.webp') 16 16, pointer !important;
+  }
 
   a:focus-visible,
   button:focus-visible {
