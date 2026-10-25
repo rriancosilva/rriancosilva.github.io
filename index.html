@@ -5,7 +5,8 @@
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Rafael Rianço-Silva - PhD Researcher in Astrophysics">
+  <meta name="description"
+        content="Rafael Rianço-Silva - PhD Researcher in Astrophysics">
   <title>Rafael Rianço-Silva</title>
 
   <!-- Open Graph / WhatsApp Preview Tags -->
@@ -18,14 +19,14 @@
 <style>
   /* COLOURS */
   :root {
-    --navy: #080f1c;
-    --paper: #f8f6f2;
-    --sand: #d7dfe5;
-    --rust: #87533d;
-    --peach: #c99675;
-    --muted: #536272;
-    --line: #c7d1da;
-  }
+  --navy: #080f1c;
+  --paper: #f8f6f2;
+  --sand: #d7dfe5;
+  --rust: #87533d;
+  --peach: #c99675;
+  --muted: #536272;
+  --line: #c7d1da;
+}
 
   /* FLOATING ARIEL TRACKER */
   #cursor-tracker {
@@ -35,12 +36,45 @@
     width: 36px; /* Adjust size of the floating satellite here */
     height: auto;
     pointer-events: none; /* Allows clicks to pass right through it */
+    transform: translate(-50%, -50%);
     z-index: 9999;
+    transition: transform 0.1s ease-out;
     will-change: transform;
   }
-
-  /* GENERAL */
-  * { box-sizing: border-box; }
+  <script>
+    const tracker = document.getElementById('cursor-tracker');
+    
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = mouseX;
+    let currentY = mouseY;
+  
+    // Track mouse position
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+  
+    // Smooth floating animation loop (trailing effect)
+    function animate() {
+      // Adjust the '0.15' value to make it follow faster (closer) or slower (more trailing)
+      currentX += (mouseX - currentX) * 0.15;
+      currentY += (mouseY - currentY) * 0.15;
+  
+      // Offset it slightly down and right from the actual arrow cursor like your photo
+      tracker.style.transform = `translate(${currentX + 18}px, ${currentY + 18}px) rotate(15deg)`;
+      
+      requestAnimationFrame(animate);
+    }
+  
+    animate();
+  </script>
+  
+  /* GENERAL & CUSTOM ARIEL CURSOR */
+  * { 
+    box-sizing: border-box; 
+    cursor: url('images/ariel_cursor.png') 16 16, auto !important;
+  }
   html { scroll-behavior: smooth; }
 
   body {
@@ -49,9 +83,13 @@
     color: var(--navy);
     font-family: system-ui, sans-serif;
     line-height: 1.75;
+    cursor: url('images/ariel_cursor.png') 16 16, auto;
   }
 
-  a { color: inherit; }
+  a, button, .button, .scholar-link, .publications-toggle, .media-link { 
+    color: inherit; 
+    cursor: url('images/ariel_cursor.png') 16 16, pointer !important;
+  }
 
   a:focus-visible,
   button:focus-visible {
@@ -112,24 +150,31 @@
   .button:hover { background: var(--rust); }
 
   /* SUBTLE STARS */
-  header,
-  .publications {
-    background-color: var(--navy);
-    background-image:
-      radial-gradient(circle at 19px 31px, #ffffff80 0 .7px, transparent 1.2px),
-      radial-gradient(circle at 83px 67px, #ffffff50 0 .6px, transparent 1.1px),
-      radial-gradient(circle at 47px 113px, #dbe5f078 0 .8px, transparent 1.4px),
-      radial-gradient(circle at 139px 43px, #ffffff38 0 .5px, transparent 1px),
-      radial-gradient(circle at 101px 157px, #ffffff65 0 .7px, transparent 1.3px),
-      radial-gradient(circle at 211px 97px, #e2b79b75 0 .9px, transparent 1.5px);
-    background-size:
-      173px 151px,
-      211px 193px,
-      257px 229px,
-      293px 263px,
-      337px 307px,
-      419px 353px;
-  }
+  /* DARK NAVY WITH SMALL, DENSE STARS */
+header,
+.publications {
+  background-color: var(--navy);
+  background-image:
+    radial-gradient(circle at 19px 31px,
+      #ffffff80 0 .7px, transparent 1.2px),
+    radial-gradient(circle at 83px 67px,
+      #ffffff50 0 .6px, transparent 1.1px),
+    radial-gradient(circle at 47px 113px,
+      #dbe5f078 0 .8px, transparent 1.4px),
+    radial-gradient(circle at 139px 43px,
+      #ffffff38 0 .5px, transparent 1px),
+    radial-gradient(circle at 101px 157px,
+      #ffffff65 0 .7px, transparent 1.3px),
+    radial-gradient(circle at 211px 97px,
+      #e2b79b75 0 .9px, transparent 1.5px);
+  background-size:
+    173px 151px,
+    211px 193px,
+    257px 229px,
+    293px 263px,
+    337px 307px,
+    419px 353px;
+}
 
   .research .section-heading,
   .media .section-heading {
@@ -148,55 +193,66 @@
     z-index: -1;
     pointer-events: none;
     background:
-      radial-gradient(circle at 12% 64%, #536b824d 0 1px, transparent 1.8px),
-      radial-gradient(circle at 29% 28%, #536b8266 0 1.3px, transparent 2px),
-      radial-gradient(circle at 43% 77%, #536b8238 0 .8px, transparent 1.5px),
-      radial-gradient(circle at 57% 43%, #536b8270 0 1.5px, transparent 2.3px),
-      radial-gradient(circle at 72% 18%, #536b824d 0 1px, transparent 1.8px),
-      radial-gradient(circle at 84% 68%, #536b8255 0 1.2px, transparent 2px),
-      radial-gradient(circle at 96% 36%, #536b8238 0 .8px, transparent 1.5px);
+      radial-gradient(circle at 12% 64%,
+        #536b824d 0 1px, transparent 1.8px),
+      radial-gradient(circle at 29% 28%,
+        #536b8266 0 1.3px, transparent 2px),
+      radial-gradient(circle at 43% 77%,
+        #536b8238 0 .8px, transparent 1.5px),
+      radial-gradient(circle at 57% 43%,
+        #536b8270 0 1.5px, transparent 2.3px),
+      radial-gradient(circle at 72% 18%,
+        #536b824d 0 1px, transparent 1.8px),
+      radial-gradient(circle at 84% 68%,
+        #536b8255 0 1.2px, transparent 2px),
+      radial-gradient(circle at 96% 36%,
+        #536b8238 0 .8px, transparent 1.5px);
   }
 
-  /* NAVIGATION */
-  header { color: var(--paper); }
+/* NAVIGATION */
+header {
+  color: var(--paper);
+}
 
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 18px;
-    padding-block: 18px;
-  }
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding-block: 18px;
+}
 
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    color: var(--paper);
-    text-decoration: none;
-  }
+.brand {
+  display: inline-flex;
+  align-items: center;
+  color: var(--paper);
+  text-decoration: none;
+}
 
-  .brand svg {
-    display: block;
-    width: clamp(150px, 18vw, 220px);
-    height: auto;
-    color: var(--paper);
-  }
+.brand svg {
+  display: block;
+  width: clamp(150px, 18vw, 220px);
+  height: auto;
+  color: var(--paper);
+}
 
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: clamp(20px, 3vw, 42px);
-    font-size: clamp(1rem, 1.4vw, 1.2rem);
-  }
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: clamp(20px, 3vw, 42px);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+}
 
-  .nav-links a {
-    color: #e0e6e7;
-    text-decoration: none;
-  }
+.nav-links a {
+  color: #e0e6e7;
+  text-decoration: none;
+}
 
-  .nav-links a:hover { color: var(--peach); }
+.nav-links a:hover {
+  color: var(--peach);
+}
 
   /* OPENING IMAGE */
   .landing {
@@ -209,7 +265,8 @@
         rgba(8, 15, 28, .48) 38%,
         rgba(8, 15, 28, .08) 72%
       ),
-      url("images/Rafael-background.png") center bottom / cover no-repeat,
+      url("images/Rafael-background.png")
+        center bottom / cover no-repeat,
       var(--navy);
   }
   
@@ -615,284 +672,324 @@
     font-size: .8rem;
     color: var(--muted);
   }
+/* ROLE & AFFILIATIONS */
+.landing-role {
+  max-width: 100%;
+  margin: 14px auto;
+  color: var(--paper);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.5;
+  letter-spacing: .02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .85);
+}
 
-  /* ROLE & AFFILIATIONS */
-  .landing-role {
-    max-width: 100%;
-    margin: 14px auto;
-    color: var(--paper);
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    line-height: 1.5;
-    letter-spacing: .02em;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, .85);
+.affiliations {
+  margin-bottom: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.affiliations-label {
+  margin: 0 0 10px;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.affiliations ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: .85rem;
+  line-height: 1.65;
+}
+
+.affiliations li + li {
+  margin-top: 6px;
+}
+
+/* CONTACT ICONS */
+.contact-links.contact-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.contact-icons a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 72px;
+  min-height: 76px;
+  margin: 0;
+  padding: 10px 4px;
+  color: var(--navy);
+  text-align: center;
+  text-decoration: none;
+}
+
+.contact-icons svg {
+  display: block;
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+}
+
+.contact-icons span {
+  font-size: .68rem;
+  line-height: 1.2;
+  letter-spacing: .04em;
+}
+
+.contact-icons a:hover {
+  color: var(--rust);
+}
+  /* PHONES & TABLETS */
+@media (max-width: 800px) {
+  .about-panel,
+  .research-grid,
+  .publication-columns,
+  .media-grid,
+  .contact-layout {
+    grid-template-columns: 1fr;
   }
 
-  .affiliations {
-    margin-bottom: 30px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--line);
+  .section-heading {
+    display: block;
   }
 
-  .affiliations-label {
-    margin: 0 0 10px;
-    font-size: .65rem;
-    font-weight: 700;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+  .publication-columns {
+    gap: 35px;
   }
 
-  .affiliations ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    color: var(--muted);
-    font-size: .85rem;
-    line-height: 1.65;
+  .nav-links {
+    gap: 14px;
   }
 
-  .affiliations li + li { margin-top: 6px; }
-
-  /* CONTACT ICONS */
-  .contact-links.contact-icons {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 18px;
+  .research,
+  .publications,
+  .media {
+    padding-block: 55px;
   }
 
-  .contact-icons a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-    width: 72px;
-    min-height: 76px;
-    margin: 0;
-    padding: 10px 4px;
-    color: var(--navy);
+  .research-card {
+    padding: 28px;
+  }
+
+  /* Centred introduction without the planet image */
+  .landing {
+    display: block;
+    min-height: auto;
+    background: var(--navy);
+  }
+
+  .landing::before {
+    content: none;
+    display: none;
+  }
+
+  .landing-content {
+    padding: 30px 0 80px;
     text-align: center;
-    text-decoration: none;
+  }
+
+  .landing h1,
+  .landing-role,
+  .landing-description {
+    max-width: 100%;
+  }
+
+  .landing h1 {
+    font-size: clamp(2rem, 7vw, 3.2rem);
+  }
+
+  .landing h1 span {
+    display: block;
+  }
+
+  .landing-description {
+    max-width: 440px;
+    margin-inline: auto;
+  }
+
+  /* Stacked media cards */
+  .media-card.featured,
+  .media-card:not(.featured) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .research .section-heading::after,
+  .media .section-heading::after {
+    display: none;
+  }
+
+  /* Compact contact section */
+  .contact {
+    padding-block: 40px;
+  }
+
+  .contact-layout {
+    gap: 16px;
+  }
+
+  .contact h2 {
+    margin-bottom: 8px;
+  }
+
+  .contact-links.contact-icons {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px;
+    width: 100%;
+    max-width: 360px;
+    align-items: start;
+  }
+
+  .contact-links.contact-icons a {
+    width: 100%;
+    min-width: 0;
+    min-height: 64px;
+    margin: 0;
+    padding: 8px 0;
+    gap: 8px;
+    text-align: center;
   }
 
   .contact-icons svg {
-    display: block;
-    width: 27px;
-    height: 27px;
-    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
   }
 
   .contact-icons span {
-    font-size: .68rem;
-    line-height: 1.2;
-    letter-spacing: .04em;
+    font-size: .62rem;
+    line-height: 1.3;
+    letter-spacing: 0;
   }
-
-  .contact-icons a:hover { color: var(--rust); }
-
-  /* PHONES & TABLETS */
-  @media (max-width: 800px) {
-    .about-panel,
-    .research-grid,
-    .publication-columns,
-    .media-grid,
-    .contact-layout {
-      grid-template-columns: 1fr;
-    }
-
-    .section-heading { display: block; }
-
-    .publication-columns { gap: 35px; }
-
-    .nav-links { gap: 14px; }
-
-    .research,
-    .publications,
-    .media {
-      padding-block: 55px;
-    }
-
-    .research-card { padding: 28px; }
-
-    .landing {
-      display: block;
-      min-height: auto;
-      background: var(--navy);
-    }
-
-    .landing::before {
-      content: none;
-      display: none;
-    }
-
-    .landing-content {
-      padding: 30px 0 80px;
-      text-align: center;
-    }
-
-    .landing h1,
-    .landing-role,
-    .landing-description {
-      max-width: 100%;
-    }
-
-    .landing h1 { font-size: clamp(2rem, 7vw, 3.2rem); }
-
-    .landing h1 span { display: block; }
-
-    .landing-description {
-      max-width: 440px;
-      margin-inline: auto;
-    }
-
-    .media-card.featured,
-    .media-card:not(.featured) {
-      grid-column: 1;
-      grid-row: auto;
-    }
-
-    .research .section-heading::after,
-    .media .section-heading::after {
-      display: none;
-    }
-
-    .contact { padding-block: 40px; }
-
-    .contact-layout { gap: 16px; }
-
-    .contact h2 { margin-bottom: 8px; }
-
-    .contact-links.contact-icons {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 4px;
-      width: 100%;
-      max-width: 360px;
-      align-items: start;
-    }
-
-    .contact-links.contact-icons a {
-      width: 100%;
-      min-width: 0;
-      min-height: 64px;
-      margin: 0;
-      padding: 8px 0;
-      gap: 8px;
-      text-align: center;
-    }
-
-    .contact-icons svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .contact-icons span {
-      font-size: .62rem;
-      line-height: 1.3;
-      letter-spacing: 0;
-    }
-  }
+}
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
 
-  /* CONTACT DETAILS */
-  #contact .contact-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    width: 100%;
-    max-width: 380px;
-    min-width: 0;
-  }
+/* Envelope centred beside both addresses */
+/* CONTACT DETAILS */
+#contact .contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 380px;
+  min-width: 0;
+}
 
-  #contact .contact-emails {
-    display: block;
-    width: 100%;
-  }
+/* Email addresses */
+#contact .contact-emails {
+  display: block;
+  width: 100%;
+}
 
-  #contact .contact-emails > svg { display: none; }
+#contact .contact-emails > svg {
+  display: none;
+}
 
-  #contact .contact-emails > div { min-width: 0; }
+#contact .contact-emails > div {
+  min-width: 0;
+}
 
-  #contact .contact-emails a {
-    display: block;
-    width: fit-content;
-    padding: 6px 0;
-    color: var(--navy);
-    font-size: clamp(.95rem, 1.5vw, 1.1rem);
-    line-height: 1.6;
-    text-decoration: none;
-    overflow-wrap: anywhere;
-  }
+#contact .contact-emails a {
+  display: block;
+  width: fit-content;
+  padding: 6px 0;
+  color: var(--navy);
+  font-size: clamp(.95rem, 1.5vw, 1.1rem);
+  line-height: 1.6;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
 
-  #contact .contact-emails a:hover {
-    color: var(--rust);
-    text-decoration: underline;
-    text-underline-offset: 5px;
-  }
+#contact .contact-emails a:hover {
+  color: var(--rust);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
 
-  #contact .contact-socials {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    width: 100%;
-    padding-top: 24px;
-    border-top: 1px solid var(--line);
-  }
+/* Social profiles */
+#contact .contact-socials {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
 
-  #contact .contact-socials a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    width: auto;
-    min-width: 0;
-    margin: 0;
-    padding: 8px 0;
-    color: var(--navy);
-    text-align: center;
-    text-decoration: none;
-  }
+#contact .contact-socials a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 8px 0;
+  color: var(--navy);
+  text-align: center;
+  text-decoration: none;
+}
 
-  #contact .contact-socials svg {
-    display: block;
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-  }
+#contact .contact-socials svg {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
 
-  #contact .contact-socials span {
-    font-size: .75rem;
-    line-height: 1.4;
-  }
+#contact .contact-socials span {
+  font-size: .75rem;
+  line-height: 1.4;
+}
 
-  #contact .contact-socials a:hover { color: var(--rust); }
+#contact .contact-socials a:hover {
+  color: var(--rust);
+}
 </style>
 </head>
 
 <body>
-  <!-- Floating ARIEL tracker image -->
-  <img id="cursor-tracker" src="images/ariel.webp" alt="" aria-hidden="true">
-
   <header>
     <nav class="wrap" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Home">
         <svg viewBox="0 0 240 64" aria-hidden="true">
           <!-- Outer orbit and its planet -->
           <g transform="rotate(-7 98 32)">
-            <ellipse cx="120" cy="32" rx="110" ry="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <ellipse
+              cx="120" cy="32" rx="110" ry="22"
+              fill="none" stroke="currentColor" stroke-width="1.5"
+            />
             <circle cx="120" cy="10" r="4" fill="currentColor"/>
           </g>
         
           <!-- Inner orbit, planet and moon -->
           <g transform="rotate(10 98 32)">
-            <ellipse cx="113" cy="32" rx="75" ry="15" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <ellipse
+              cx="113" cy="32" rx="75" ry="15"
+              fill="none" stroke="currentColor" stroke-width="1.5"
+            />
+        
             <circle cx="188" cy="32" r="5" fill="currentColor"/>
+        
             <g transform="rotate(-25 188 32)">
-              <circle cx="188" cy="32" r="9" fill="none" stroke="currentColor" stroke-width=".8"/>
+              <circle
+                cx="188" cy="32" r="9"
+                fill="none" stroke="currentColor" stroke-width=".8"
+              />
               <circle cx="188" cy="41" r="1.8" fill="currentColor"/>
             </g>
           </g>
@@ -900,11 +997,20 @@
           <!-- Star -->
           <g fill="currentColor" stroke="currentColor">
             <circle cx="98" cy="32" r="5.5" stroke="none"/>
-            <path d="M98 21v4 M98 39v4 M87 32h4 M105 32h4 M90 24l3 3 M103 37l3 3 M90 40l3-3 M103 27l3-3" fill="none" stroke-width="1.2" stroke-linecap="round"/>
+            <path
+              d="M98 21v4 M98 39v4
+                 M87 32h4 M105 32h4
+                 M90 24l3 3 M103 37l3 3
+                 M90 40l3-3 M103 27l3-3"
+              fill="none"
+              stroke-width="1.2"
+              stroke-linecap="round"
+            />
           </g>
+        
         </svg>
       </a>
-
+  
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#research">Research</a>
@@ -921,8 +1027,10 @@
         <h1>Rafael <span>Rianço-Silva</span></h1>
         <p class="landing-role">PhD Researcher in Astrophysics</p>
         <p class="landing-description">
-          Explore my research, publications, and the questions that inspire my work.
+          Explore my research, publications, and the
+          questions that inspire my work.
         </p>
+
         <a class="landing-link" href="#about">Meet me! ↓</a>
       </div>
     </div>
@@ -930,7 +1038,11 @@
     <section id="about" class="about" aria-labelledby="about-title">
       <div class="wrap about-panel">
         <figure class="about-photo">
-          <img src="images/Rafael-profile_picture.jpeg" alt="Portrait of Rafael Rianço-Silva" loading="lazy">
+          <img
+            src="images/Rafael-profile_picture.jpeg"
+            alt="Portrait of Rafael Rianço-Silva"
+            loading="lazy"
+          >
         </figure>
     
         <div class="about-copy">
@@ -938,13 +1050,24 @@
           <h2 id="about-title">Hello, <em>I’m Rafael.</em></h2>
     
           <p class="intro">
-            I’m a PhD Researcher in Astrophysics at Instituto de Astrofísica e Ciências do Espaço, Faculdade de Ciências da Universidade de Lisboa, and University College London.
+            I’m a PhD Researcher in Astrophysics at Instituto de
+            Astrofísica e Ciências do Espaço, Faculdade de Ciências
+            da Universidade de Lisboa, and University College London.
           </p>
     
-          <p>[Describe your research interests and the questions that motivate your work.]</p>
-          <p>[Share a little about your background and what you enjoy outside research.]</p>
+          <p>
+            [Describe your research interests and the questions
+            that motivate your work.]
+          </p>
     
-          <a class="button" href="#research">Explore my research ↗</a>
+          <p>
+            [Share a little about your background and what
+            you enjoy outside research.]
+          </p>
+    
+          <a class="button" href="#research">
+            Explore my research ↗
+          </a>
         </div>
       </div>
     </section>
@@ -961,72 +1084,112 @@
         <div class="research-grid">
           <article class="research-card">
             <h3>[Research topic or project title]</h3>
-            <p>[Describe the question you are investigating, your approach, and why it matters.]</p>
+            <p>
+              [Describe the question you are investigating,
+              your approach, and why it matters.]
+            </p>
+
+            <!-- Optional research image:
+            <img class="research-image"
+                 src="images/research.jpg"
+                 alt="Describe your research figure"
+                 loading="lazy">
+            -->
           </article>
 
           <article class="research-card">
             <h3>[Another research topic]</h3>
-            <p>[Introduce another project, method, or scientific interest.]</p>
+            <p>
+              [Introduce another project, method,
+              or scientific interest.]
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="publications" class="publications">
-      <div class="wrap">
-        <div class="publication-heading">
-          <div>
-            <p class="kicker">03 / Published work</p>
-            <h2>Publications</h2>
-          </div>
-          <a class="scholar-link" href="https://scholar.google.com/citations?user=qhsv2mwAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
-        </div>
-
-        <div class="publication-columns">
-          <div class="publication-column">
-            <h3>First-author publications <span class="publication-count">4</span></h3>
-            <ol class="paper-list">
-              <li>
-                <h4>[First-author paper 1 — title]</h4>
-                <p>[Authors in published order]</p>
-                <p>[Journal · Year]</p>
-              </li>
-              <li>
-                <h4>[First-author paper 2 — title]</h4>
-                <p>[Authors in published order]</p>
-                <p>[Journal · Year]</p>
-              </li>
-              <li>
-                <h4>[First-author paper 3 — title]</h4>
-                <p>[Authors in published order]</p>
-                <p>[Journal · Year]</p>
-              </li>
-              <li>
-                <h4>[First-author paper 4 — title]</h4>
-                <p>[Authors in published order]</p>
-                <p>[Journal · Year]</p>
-              </li>
-            </ol>
-          </div>
-
-          <div class="publication-column">
-            <h3>Co-authored publications <span class="publication-count">2</span></h3>
-            <ol class="paper-list">
-              <li>
-                <h4>[Co-authored paper 1 — title]</h4>
-                <p>[Authors in published order]</p>
-                <p>[Journal · Year]</p>
-              </li>
-              <li>
-                <h4>[Co-authored paper 2 — title]</h4>
-                <p>[Authors in published order]</p>
-                <p>[Journal · Year]</p>
-              </li>
-            </ol>
-          </div>
-        </div>
+<section id="publications" class="publications">
+  <div class="wrap">
+    <div class="publication-heading">
+      <div>
+        <p class="kicker">03 / Published work</p>
+        <h2>Publications</h2>
       </div>
-    </section>
+
+      <a
+        class="scholar-link"
+        href="https://scholar.google.com/citations?user=qhsv2mwAAAAJ&amp;hl=en"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Google Scholar ↗
+      </a>
+    </div>
+
+    <div class="publication-columns">
+
+      <div class="publication-column">
+        <h3>
+          First-author publications
+          <span class="publication-count">4</span>
+        </h3>
+
+        <ol class="paper-list">
+          <li>
+            <h4>[First-author paper 1 — title]</h4>
+            <p>[Authors in published order]</p>
+            <p>[Journal · Year]</p>
+            <!-- Add the paper link here:
+            <div class="paper-links">
+              <a href="https://doi.org/YOUR-DOI">Read paper ↗</a>
+            </div>
+            -->
+          </li>
+
+          <li>
+            <h4>[First-author paper 2 — title]</h4>
+            <p>[Authors in published order]</p>
+            <p>[Journal · Year]</p>
+          </li>
+
+          <li>
+            <h4>[First-author paper 3 — title]</h4>
+            <p>[Authors in published order]</p>
+            <p>[Journal · Year]</p>
+          </li>
+
+          <li>
+            <h4>[First-author paper 4 — title]</h4>
+            <p>[Authors in published order]</p>
+            <p>[Journal · Year]</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="publication-column">
+        <h3>
+          Co-authored publications
+          <span class="publication-count">2</span>
+        </h3>
+
+        <ol class="paper-list">
+          <li>
+            <h4>[Co-authored paper 1 — title]</h4>
+            <p>[Authors in published order]</p>
+            <p>[Journal · Year]</p>
+          </li>
+
+          <li>
+            <h4>[Co-authored paper 2 — title]</h4>
+            <p>[Authors in published order]</p>
+            <p>[Journal · Year]</p>
+          </li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <section id="media" class="media" aria-labelledby="media-title">
       <div class="wrap">
@@ -1041,174 +1204,211 @@
           <article class="media-card" style="order: 4;">
             <p class="kicker">In the news · National Geographic Portugal</p>
             <h3>Titan’s atmosphere and exoplanets</h3>
-            <a class="media-link" href="https://www.nationalgeographic.pt/ciencia/estudo-atmosfera-tita-exoplanetas-instituto-astrofisica_4824">Read the article ↗</a>
+            <a
+              class="media-link"
+              href="https://www.nationalgeographic.pt/ciencia/estudo-atmosfera-tita-exoplanetas-instituto-astrofisica_4824"
+            >
+              Read the article ↗
+            </a>
           </article>
-
           <article class="media-card featured">
             <p class="kicker">On television · RTP</p>
-            <a class="media-symbol" href="https://www.rtp.pt/play/p12688/e770101/biosfera" target="_blank" rel="noopener noreferrer" aria-label="Watch Biosfera on RTP Play (opens in a new tab)">
+                        <a
+              class="media-symbol"
+              href="https://www.rtp.pt/play/p12688/e770101/biosfera"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Watch Biosfera on RTP Play (opens in a new tab)"
+            >
               <span aria-hidden="true">▶</span>
             </a>
             <h3>Biosfera</h3>
-            <p class="media-date">Episode 19 · <time datetime="2024-05-18">18 May 2024</time></p>
-            <p class="media-summary">Exploring the future of space exploration, methane in Titan’s atmosphere, and the chemistry that produces organic molecules.</p>
-            <a class="media-link" href="https://www.rtp.pt/play/p12688/e770101/biosfera">Watch the episode on RTP ↗</a>
+            <p class="media-date">
+              Episode 19 ·
+              <time datetime="2024-05-18">18 May 2024</time>
+            </p>
+            <p class="media-summary">
+              Exploring the future of space exploration,
+              methane in Titan’s atmosphere, and the chemistry
+              that produces organic molecules.
+            </p>
+            <a class="media-link"
+               href="https://www.rtp.pt/play/p12688/e770101/biosfera">
+              Watch the episode on RTP ↗
+            </a>
           </article>
 
           <article class="media-card">
             <p class="kicker">Press release · IA</p>
             <h3>Titan as a natural laboratory</h3>
-            <p class="media-date"><time datetime="2024-03-07">7 March 2024</time></p>
-            <p class="media-summary">The Instituto de Astrofísica e Ciências do Espaço shares our research on methane signatures in Titan’s atmosphere.</p>
-            <a class="media-link" href="https://divulgacao.iastro.pt/pt/2024/03/07/tita-testes-vida-fora-sistema-solar/">Read the press release ↗</a>
+            <p class="media-date">
+              <time datetime="2024-03-07">7 March 2024</time>
+            </p>
+            <p class="media-summary">
+              The Instituto de Astrofísica e Ciências do Espaço
+              shares our research on methane signatures in
+              Titan’s atmosphere.
+            </p>
+            <a class="media-link"
+               href="https://divulgacao.iastro.pt/pt/2024/03/07/tita-testes-vida-fora-sistema-solar/">
+              Read the press release ↗
+            </a>
           </article>
 
           <article class="media-card">
             <p class="kicker">In the news · Expresso</p>
             <h3 lang="pt">Titã, o mundo fascinante e análogo à Terra primitiva</h3>
-            <p class="media-date"><time datetime="2024-03-06">6 March 2024</time></p>
-            <p class="media-summary">Titan, the early Earth, and questions about the origins of life.</p>
-            <a class="media-link" href="https://expresso.pt/sociedade/ciencia/2024-03-06-Lua-de-Saturno-pode-explicar-a-origem-da-vida-Tita-o-mundo-fascinante-e-analogo-a-Terra-primitiva-0692f6ae">Read the article ↗</a>
+            <p class="media-date">
+              <time datetime="2024-03-06">6 March 2024</time>
+            </p>
+            <p class="media-summary">
+              Titan, the early Earth, and questions about
+              the origins of life.
+            </p>
+            <a class="media-link"
+               href="https://expresso.pt/sociedade/ciencia/2024-03-06-Lua-de-Saturno-pode-explicar-a-origem-da-vida-Tita-o-mundo-fascinante-e-analogo-a-Terra-primitiva-0692f6ae">
+              Read the article ↗
+            </a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="wrap contact-layout">
-        <div>
-          <p class="kicker">05 / Contact</p>
-          <h2>Let’s talk.</h2>
+  <section class="contact" id="contact">
+    <div class="wrap contact-layout">
+      <div>
+        <p class="kicker">05 / Contact</p>
+        <h2>Let’s talk.</h2>
+      </div>
+  
+      <div class="contact-details">
+  
+        <!-- One envelope beside both email addresses -->
+        <div class="contact-emails">
+          <svg viewBox="3 5 18 14" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="1"
+                  fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <path d="m3 6 9 7 9-7"
+                  fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+  
+          <div>
+            <a href="mailto:rdsilva@fc.ul.pt">
+              rdsilva(@)fc.ul.pt
+            </a>
+            <a href="mailto:rafael.silva@ucl.ac.uk">
+              rafael.silva(@)ucl.ac.uk
+            </a>
+          </div>
         </div>
-    
-        <div class="contact-details">
-          <div class="contact-emails">
-            <svg viewBox="3 5 18 14" aria-hidden="true">
-              <rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              <path d="m3 6 9 7 9-7" fill="none" stroke-width="1.5"/>
+  
+        <!-- Social profiles -->
+        <div class="contact-socials">
+  
+          <a href="https://www.linkedin.com/in/rafael-rianco-gomesdasilva/"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="LinkedIn profile (opens in a new tab)">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor"
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM7.119 20.452H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z"/>
             </svg>
-    
-            <div>
-              <a href="mailto:rdsilva@fc.ul.pt">rdsilva(@)fc.ul.pt</a>
-              <a href="mailto:rafael.silva@ucl.ac.uk">rafael.silva(@)ucl.ac.uk</a>
-            </div>
-          </div>
-    
-          <div class="contact-socials">
-            <a href="https://www.linkedin.com/in/rafael-rianco-gomesdasilva/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM7.119 20.452H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z"/>
-              </svg>
-            </a>
-    
-            <a href="https://scholar.google.com/citations?user=qhsv2mwAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar profile (opens in a new tab)">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14ZM12 0 0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5Z"/>
-              </svg>
-            </a>
-    
-            <a href="https://orcid.org/0000-0002-0586-9536" target="_blank" rel="noopener noreferrer" aria-label="ORCID profile (opens in a new tab)">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="11" fill="currentColor"/>
-                <g fill="var(--sand)">
-                  <circle cx="6.8" cy="6.8" r="1"/>
-                  <path d="M6 9h1.6v9H6z"/>
-                  <path fill-rule="evenodd" d="M10 6h3.3a6 6 0 0 1 0 12H10V6Zm1.6 1.6v8.8h1.7a4.4 4.4 0 0 0 0-8.8h-1.7Z"/>
-                </g>
-              </svg>
-            </a>
-          </div>
+          </a>
+  
+          <a href="https://scholar.google.com/citations?user=qhsv2mwAAAAJ&amp;hl=en"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Google Scholar profile (opens in a new tab)">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor"
+                d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14ZM12 0 0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5Z"/>
+            </svg>
+          </a>
+  
+          <a href="https://orcid.org/0000-0002-0586-9536"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="ORCID profile (opens in a new tab)">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="11" fill="currentColor"/>
+              <g fill="var(--sand)">
+                <circle cx="6.8" cy="6.8" r="1"/>
+                <path d="M6 9h1.6v9H6z"/>
+                <path fill-rule="evenodd"
+                  d="M10 6h3.3a6 6 0 0 1 0 12H10V6Zm1.6 1.6v8.8h1.7a4.4 4.4 0 0 0 0-8.8h-1.7Z"/>
+              </g>
+            </svg>
+          </a>
+  
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   </main>
 
   <footer class="wrap">© Rafael Rianço-Silva</footer>
+<script>
+  (() => {
+    const columns = document.querySelector(
+      "#publications .publication-columns"
+    );
 
-  <!-- Publications toggle script -->
-  <script>
-    (() => {
-      const columns = document.querySelector(
-        "#publications .publication-columns"
-      );
+    if (!columns) return;
 
-      if (!columns) return;
+    document.querySelectorAll(".publications-toggle").forEach(
+      button => button.remove()
+    );
 
-      document.querySelectorAll(".publications-toggle").forEach(
-        button => button.remove()
-      );
+    columns.querySelectorAll(".paper-list").forEach((list, index) => {
+      const papers = Array.from(list.children);
 
-      columns.querySelectorAll(".paper-list").forEach((list, index) => {
-        const papers = Array.from(list.children);
+      // Display two publications in each category.
+      papers.forEach(paper => {
+        paper.hidden = false;
+      });
 
-        papers.forEach(paper => { paper.hidden = false; });
+      const extraPapers = papers.slice(2);
+      if (extraPapers.length === 0) return;
 
-        const extraPapers = papers.slice(2);
-        if (extraPapers.length === 0) return;
+      extraPapers.forEach(paper => {
+        paper.hidden = true;
+      });
 
-        extraPapers.forEach(paper => { paper.hidden = true; });
+      list.id = "papers-category-" + index;
 
-        list.id = "papers-category-" + index;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "publications-toggle";
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-controls", list.id);
+      button.textContent = `View ${extraPapers.length} more papers ↓`;
 
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "publications-toggle";
-        button.setAttribute("aria-expanded", "false");
-        button.setAttribute("aria-controls", list.id);
-        button.textContent = `View ${extraPapers.length} more papers ↓`;
+      button.addEventListener("click", () => {
+        const expanded =
+          button.getAttribute("aria-expanded") === "true";
 
-        button.addEventListener("click", () => {
-          const expanded = button.getAttribute("aria-expanded") === "true";
-
-          extraPapers.forEach(paper => { paper.hidden = expanded; });
-
-          button.setAttribute("aria-expanded", String(!expanded));
-          button.textContent = expanded
-            ? `View ${extraPapers.length} more papers ↓`
-            : "Show fewer papers ↑";
+        extraPapers.forEach(paper => {
+          paper.hidden = expanded;
         });
 
-        list.insertAdjacentElement("afterend", button);
+        button.setAttribute("aria-expanded", String(!expanded));
+        button.textContent = expanded
+          ? `View ${extraPapers.length} more papers ↓`
+          : "Show fewer papers ↑";
       });
-    })();
-  </script>
 
-  <!-- External links script -->
-  <script>
-    document.querySelectorAll('.media a[href]').forEach(link => {
-      const url = new URL(link.href, document.baseURI);
-      if (url.protocol === 'https:' || url.protocol === 'http:') {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-      }
+      list.insertAdjacentElement("afterend", button);
     });
-  </script>
+  })();
+</script>
+<script>
+  // Open media articles and the RTP episode in a new tab.
+  document.querySelectorAll('.media a[href]').forEach(link => {
+    const url = new URL(link.href, document.baseURI);
 
-  <!-- Floating ARIEL cursor movement script -->
-  <script>
-    const tracker = document.getElementById('cursor-tracker');
-    
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let currentX = mouseX;
-    let currentY = mouseY;
-
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    function animate() {
-      currentX += (mouseX - currentX) * 0.15;
-      currentY += (mouseY - currentY) * 0.15;
-
-      // Position satellite slightly offset from the mouse pointer
-      tracker.style.transform = `translate(${currentX + 18}px, ${currentY + 18}px) rotate(15deg)`;
-      
-      requestAnimationFrame(animate);
+    if (url.protocol === 'https:' || url.protocol === 'http:') {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
     }
-
-    animate();
-  </script>
+  });
+</script>
+  <img id="cursor-tracker" src="images/ariel_cursor.png" alt="" aria-hidden="true">
 </body>
 </html>
