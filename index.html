@@ -603,6 +603,242 @@ a.media-symbol:hover {
     grid-row: auto;
   }
 }
+.media-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 14px 24px;
+  align-items: start;
+}
+
+.media-card.featured {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+}
+
+.media-card:not(.featured) {
+  grid-column: 2;
+}
+
+@media (max-width: 800px) {
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-card.featured,
+  .media-card:not(.featured) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+/* FINAL COLOURS AND LAYOUT */
+:root {
+  --navy: #171d31;
+  --paper: #f7f5fa;
+  --sand: #e7e3ef;
+  --rust: #725486;
+  --peach: #d8bde7;
+  --muted: #596174;
+  --line: #d7d2e2;
+}
+
+a:focus-visible {
+  outline-color: #a8c7ef;
+}
+
+.about-photo {
+  background: #d7d5e6;
+}
+
+.about-panel {
+  box-shadow: 0 22px 60px #171d311a;
+}
+
+.research-card {
+  background: #e9e1ef;
+  border-color: #866297;
+}
+
+.research-card:nth-child(2) {
+  background: #e0e9f3;
+  border-color: #526f99;
+}
+
+.research-card:nth-child(2)::before {
+  color: #526f99;
+}
+
+/* Name centred at the top of the photograph. */
+.landing {
+  display: block;
+  min-height: 85svh;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(23,29,49,.88) 0%,
+      rgba(23,29,49,.55) 25%,
+      rgba(23,29,49,.12) 55%
+    ),
+    url("images/Rafael-talk.jpg") center / cover no-repeat,
+    var(--navy);
+}
+
+.landing-content {
+  width: min(1160px, calc(100% - 40px));
+  margin-inline: auto;
+  padding: 18px 0 90px;
+  text-align: center;
+}
+
+.landing .kicker {
+  margin: 0 0 12px;
+}
+
+.landing h1 {
+  margin: 10px 0;
+  font-size: clamp(2.5rem, 5.5vw, 5.3rem);
+  line-height: 1.1;
+}
+
+.landing h1 span {
+  display: inline;
+  overflow-wrap: normal;
+}
+
+.landing-description {
+  max-width: 580px;
+  margin: 12px auto;
+  font-size: .95rem;
+}
+
+.landing-link {
+  margin-top: 8px;
+}
+
+/* Compact press cards beside Biosfera. */
+.media-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 12px 24px;
+  align-items: start;
+}
+
+.media-card {
+  margin: 0;
+  background: #fcfbfe;
+}
+
+.media-card.featured {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  padding: 30px;
+  background: var(--sand);
+}
+
+.media-card:not(.featured) {
+  grid-column: 2;
+  padding: 18px 22px;
+}
+
+.media-card:not(.featured) .kicker {
+  margin: 0 0 7px;
+  font-size: .65rem;
+}
+
+.media-card:not(.featured) h3 {
+  margin: 0 0 7px;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.media-card:not(.featured) .media-date {
+  margin: 0 0 7px;
+}
+
+.media-card:not(.featured) .media-summary {
+  margin: 0 0 8px;
+  font-size: .88rem;
+  line-height: 1.5;
+}
+
+.media-card:not(.featured) .media-link {
+  margin-top: 0;
+  padding-top: 3px;
+  font-size: .85rem;
+}
+
+.media-symbol {
+  margin: 10px 0 20px;
+}
+
+.media-card.featured h3 {
+  margin: 8px 0;
+}
+
+/* Expand button matching Google Scholar. */
+.paper-list li[hidden] {
+  display: none;
+}
+
+.publications-toggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22px;
+  padding: 10px 18px;
+  border: 1px solid var(--peach);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--peach);
+  font: inherit;
+  font-size: .88rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.publications-toggle:hover {
+  background: var(--peach);
+  color: var(--navy);
+}
+
+.publications-toggle:focus-visible {
+  outline: 3px solid #a8c7ef;
+  outline-offset: 5px;
+}
+
+@media (max-width: 800px) {
+  .landing {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    background: var(--navy);
+  }
+
+  .landing-content {
+    order: 0;
+    padding: 22px 0 30px;
+  }
+
+  .landing::before {
+    order: 1;
+    height: 65vw;
+    margin-bottom: 45px;
+  }
+
+  .landing h1 span {
+    display: block;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-card.featured,
+  .media-card:not(.featured) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
   </style>
 </head>
 
@@ -890,150 +1126,6 @@ a.media-symbol:hover {
           <a href="https://github.com/rriancosilva">GitHub ↗</a>
         </div>
       </div>
-/* Centre the opening text near the top. */
-.landing {
-  display: block;
-  min-height: 85svh;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(9,24,34,.85) 0%,
-      rgba(9,24,34,.55) 28%,
-      rgba(9,24,34,.12) 60%
-    ),
-    url("images/Rafael-talk.jpg") center / cover no-repeat,
-    var(--navy);
-}
-
-.landing-content {
-  width: min(1160px, calc(100% - 40px));
-  padding: 35px 0 100px;
-  margin-inline: auto;
-  text-align: center;
-}
-
-.landing h1 {
-  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
-  margin: 15px 0;
-  line-height: 1.1;
-}
-
-.landing h1 span {
-  display: inline;
-  overflow-wrap: normal;
-}
-
-.landing-description {
-  max-width: 580px;
-  margin: 12px auto;
-  font-size: .95rem;
-}
-
-.landing-link {
-  margin-top: 12px;
-}
-
-@media (max-width: 800px) {
-  /* Keep the separate photo on phones, with text above it. */
-  .landing {
-    display: flex;
-    flex-direction: column;
-    min-height: auto;
-    background: var(--navy);
-  }
-
-  .landing-content {
-    order: 0;
-    padding: 30px 0;
-  }
-
-  .landing::before {
-    order: 1;
-    height: 65vw;
-    margin-bottom: 45px;
-  }
-
-  .landing h1 span {
-    display: block;
-  }
-}
-
-/* Reduce the vertical space in the right-hand press cards. */
-.media-grid {
-  gap: 14px 24px;
-  align-content: start;
-}
-
-.media-card:not(.featured) {
-  padding: 20px 24px;
-}
-
-.media-card:not(.featured) .kicker {
-  margin: 0 0 8px;
-  font-size: .65rem;
-}
-
-.media-card:not(.featured) h3 {
-  margin: 0 0 8px;
-  font-size: 1.35rem;
-  line-height: 1.2;
-}
-
-.media-card:not(.featured) .media-date {
-  margin: 0 0 8px;
-}
-
-.media-card:not(.featured) .media-summary {
-  margin: 0 0 10px;
-  font-size: .9rem;
-  line-height: 1.5;
-}
-
-.media-card:not(.featured) .media-link {
-  margin-top: 0;
-  padding-top: 4px;
-  font-size: .85rem;
-}
-
-/* Also reduce the excess spacing in the television panel. */
-.media-card.featured {
-  padding: 30px;
-}
-
-.media-symbol {
-  margin: 10px 0 20px;
-}
-
-.media-card.featured h3 {
-  margin: 8px 0;
-}
-
-/* Publication expand button. */
-.paper-list li[hidden] {
-  display: none;
-}
-
-.publications-toggle {
-  display: block;
-  margin: 30px auto 0;
-  padding: 12px 22px;
-  border: 1px solid var(--peach);
-  background: transparent;
-  color: var(--peach);
-  font: inherit;
-  font-size: .9rem;
-  cursor: pointer;
-}
-
-.publications-toggle:hover {
-  background: var(--peach);
-  color: var(--navy);
-}
-
-.publications-toggle:focus-visible {
-  outline: 3px solid var(--peach);
-  outline-offset: 5px;
-}
     </section>
   </main>
 
@@ -1046,44 +1138,50 @@ a.media-symbol:hover {
 
     if (!columns) return;
 
-    const lists = columns.querySelectorAll(".paper-list");
-    const extraPapers = [];
+    document.querySelectorAll(".publications-toggle").forEach(
+      button => button.remove()
+    );
 
-    // Keep the first paper in each category visible.
-    lists.forEach((list) => {
-      Array.from(list.children).slice(1).forEach((paper) => {
+    columns.querySelectorAll(".paper-list").forEach((list, index) => {
+      const papers = Array.from(list.children);
+
+      // Display two publications in each category.
+      papers.forEach(paper => {
+        paper.hidden = false;
+      });
+
+      const extraPapers = papers.slice(2);
+      if (extraPapers.length === 0) return;
+
+      extraPapers.forEach(paper => {
         paper.hidden = true;
-        extraPapers.push(paper);
-      });
-    });
-
-    if (extraPapers.length === 0) return;
-
-    columns.id = "publication-lists";
-
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "publications-toggle";
-    button.setAttribute("aria-expanded", "false");
-    button.setAttribute("aria-controls", "publication-lists");
-    button.textContent =
-      `Show ${extraPapers.length} more publications ↓`;
-
-    button.addEventListener("click", () => {
-      const expanded =
-        button.getAttribute("aria-expanded") === "true";
-
-      extraPapers.forEach((paper) => {
-        paper.hidden = expanded;
       });
 
-      button.setAttribute("aria-expanded", String(!expanded));
-      button.textContent = expanded
-        ? `Show ${extraPapers.length} more publications ↓`
-        : "Show fewer publications ↑";
-    });
+      list.id = "papers-category-" + index;
 
-    columns.insertAdjacentElement("afterend", button);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "publications-toggle";
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-controls", list.id);
+      button.textContent = `View ${extraPapers.length} more papers ↓`;
+
+      button.addEventListener("click", () => {
+        const expanded =
+          button.getAttribute("aria-expanded") === "true";
+
+        extraPapers.forEach(paper => {
+          paper.hidden = expanded;
+        });
+
+        button.setAttribute("aria-expanded", String(!expanded));
+        button.textContent = expanded
+          ? `View ${extraPapers.length} more papers ↓`
+          : "Show fewer papers ↑";
+      });
+
+      list.insertAdjacentElement("afterend", button);
+    });
   })();
 </script>
 </body>
