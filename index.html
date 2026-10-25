@@ -28,6 +28,48 @@
   --line: #c7d1da;
 }
 
+  /* FLOATING ARIEL TRACKER */
+  #cursor-tracker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px; /* Adjust size of the floating satellite here */
+    height: auto;
+    pointer-events: none; /* Allows clicks to pass right through it */
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+  }
+  <script>
+    const tracker = document.getElementById('cursor-tracker');
+    
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = mouseX;
+    let currentY = mouseY;
+  
+    // Track mouse position
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+  
+    // Smooth floating animation loop (trailing effect)
+    function animate() {
+      // Adjust the '0.15' value to make it follow faster (closer) or slower (more trailing)
+      currentX += (mouseX - currentX) * 0.15;
+      currentY += (mouseY - currentY) * 0.15;
+  
+      // Offset it slightly down and right from the actual arrow cursor like your photo
+      tracker.style.transform = `translate(${currentX + 18}px, ${currentY + 18}px) rotate(15deg)`;
+      
+      requestAnimationFrame(animate);
+    }
+  
+    animate();
+  </script>
+  
   /* GENERAL & CUSTOM ARIEL CURSOR */
   * { 
     box-sizing: border-box; 
@@ -1367,5 +1409,6 @@ nav {
     }
   });
 </script>
+  <img id="cursor-tracker" src="images/ariel_cursor.png" alt="" aria-hidden="true">
 </body>
 </html>
