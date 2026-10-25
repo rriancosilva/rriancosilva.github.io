@@ -210,18 +210,24 @@ header,
   }
 
   .landing h1 {
-    margin: 10px 0;
-    font-size: clamp(2.5rem, 5.5vw, 5.3rem);
-    line-height: 1.1;
+    max-width: 42%;
+    margin: 10px 0 22px;
+    font-size: clamp(2rem, 3.6vw, 3.4rem);
+    line-height: 1.12;
+    letter-spacing: -.035em;
   }
-
-  .landing h1 span { color: var(--peach); }
-
+  
+  .landing h1 span {
+    display: block;
+    color: var(--peach);
+  }
+  
   .landing-description {
-  max-width: 500px;
-  margin: 12px 0;
-  color: #e6ebec;
-  font-size: .95rem;
+    max-width: 36%;
+    margin: 16px 0;
+    color: #e6ebec;
+    font-size: .9rem;
+    line-height: 1.7;
   }
 
   .landing-link {
@@ -593,11 +599,13 @@ header,
   }
 /* ROLE & AFFILIATIONS */
 .landing-role {
-    margin: 14px 0;
-    color: var(--paper);
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    letter-spacing: .03em;
-  }
+  max-width: 40%;
+  margin: 14px 0;
+  color: var(--paper);
+  font-size: clamp(.9rem, 1.4vw, 1.1rem);
+  line-height: 1.5;
+  letter-spacing: .02em;
+}
 
 .affiliations {
   margin-bottom: 30px;
@@ -721,6 +729,19 @@ header,
     .research .section-heading::after,
     .media .section-heading::after {
       display: none;
+    }
+    .landing h1,
+    .landing-role,
+    .landing-description {
+      max-width: 100%;
+    }
+    
+    .landing h1 {
+      font-size: clamp(2rem, 7vw, 3.2rem);
+    }
+    
+    .landing-description {
+      max-width: 440px;
     }
   }
 
