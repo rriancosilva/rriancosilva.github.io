@@ -7,6 +7,242 @@
         content="Rafael Rianço-Silva — research and publications.">
   <title>Rafael Rianço-Silva</title>
 
+  /* NEW OPENING AND ABOUT ME */
+
+.landing,
+.about-feature {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.landing {
+  position: relative;
+  min-height: 85svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: #142936;
+  color: #fffaf3;
+}
+
+/* Replace images/background.jpg with your chosen background. */
+.landing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10, 25, 36, .83),
+      rgba(10, 25, 36, .30)
+    ),
+    url("images/Rafael-talk.jpeg") center / cover no-repeat,
+    linear-gradient(135deg, #142936, #41626b);
+}
+
+.landing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    rgba(10, 25, 36, .55),
+    transparent 45%
+  );
+}
+
+.landing-content {
+  width: min(1100px, calc(100% - 48px));
+  margin: auto;
+  padding: 95px 0 120px;
+}
+
+.landing-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #f3d0b7;
+}
+
+.landing-label::before {
+  content: "";
+  width: 45px;
+  height: 1px;
+  background: currentColor;
+}
+
+.landing h1 {
+  max-width: 950px;
+  margin: 32px 0;
+  font-family: Georgia, serif;
+  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.055em;
+}
+
+.landing h1 span {
+  display: block;
+  color: #f3d0b7;
+}
+
+.landing-description {
+  max-width: 460px;
+  color: #e0e6e7;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.landing-link {
+  display: inline-flex;
+  gap: 30px;
+  align-items: center;
+  margin-top: 28px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f3d0b7;
+  color: #fffaf3;
+  text-decoration: none;
+}
+
+.landing-link span {
+  transition: transform .2s ease;
+}
+
+.landing-link:hover span {
+  transform: translateY(4px);
+}
+
+.about-feature {
+  position: relative;
+  padding: 0 24px 90px;
+  border: 0;
+  background: #e9dfd2;
+  scroll-margin-top: 30px;
+}
+
+.about-layout {
+  position: relative;
+  top: -42px;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  max-width: 1200px;
+  margin: 0 auto -42px;
+  background: #fffcf7;
+  box-shadow: 0 22px 65px rgba(24, 39, 45, .12);
+}
+
+.about-photo {
+  position: relative;
+  align-self: start;
+  margin: 0;
+  background: #142936;
+}
+
+.about-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* A caption over the bottom of the photo. */
+.about-photo figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 45px 25px 20px;
+  color: white;
+  background: linear-gradient(transparent, rgba(0, 0, 0, .75));
+  font-size: .8rem;
+  letter-spacing: .04em;
+}
+
+.about-content {
+  padding: clamp(30px, 4vw, 65px);
+}
+
+.about-kicker {
+  margin: 0 0 20px;
+  color: #a64d32;
+  font-size: .73rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+}
+
+.about-content h2 {
+  margin: 0 0 28px;
+  color: #142936;
+  font-family: Georgia, serif;
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -.045em;
+}
+
+.about-content h2 em {
+  color: #a64d32;
+  font-weight: 400;
+}
+
+.about-content p:not(.about-kicker) {
+  color: #53616a;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.about-content .about-intro {
+  color: #142936 !important;
+  font-size: 1.2rem !important;
+}
+
+.about-action {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #142936;
+  color: #fffaf3;
+  text-decoration: none;
+  border: 1px solid #142936;
+}
+
+.about-action:hover {
+  background: #a64d32;
+  border-color: #a64d32;
+}
+
+@media (max-width: 800px) {
+  .landing {
+    min-height: 75svh;
+  }
+
+  .landing-content {
+    padding: 75px 0 100px;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .about-feature {
+    padding: 0 18px 55px;
+  }
+
+  .about-content {
+    padding: 35px 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-link span {
+    transition: none;
+  }
+}
+  
   <style>
     :root {
       --paper: #faf8f4;
@@ -255,53 +491,77 @@
   </header>
 
   <main class="wrap">
-    <div class="hero">
-      <div>
-        <p class="eyebrow">Personal & academic website</p>
-        <h1>Rafael<br>Rianço-Silva</h1>
-        <p class="lead">
-          Welcome! Here you can explore my research,
-          publications, and the questions that inspire my work.
-        </p>
-        <a class="button" href="#about">More about me ↗</a>
-      </div>
+    <!-- OPENING: a separate background photograph -->
+<div class="landing">
+  <div class="landing-content">
+    <p class="landing-label">Research · Discovery · Curiosity</p>
 
-      <figure class="portrait">
-        <div class="portrait-placeholder">
-          <span aria-hidden="true">Your portrait goes here</span>
-        </div>
+    <h1>
+      Rafael
+      <span>Rianço-Silva</span>
+    </h1>
 
-        <!-- Upload images/Rafael-profile_picture.jpeg to display your portrait. -->
-        <img
-          src="images/Rafael-profile_picture.jpeg"
-          alt="Portrait of Rafael Rianço-Silva"
-          onerror="this.hidden=true; this.style.display='none';"
-        >
-      </figure>
+    <p class="landing-description">
+      Welcome to my corner of the web.
+      Explore my research, publications, and the person
+      behind the work.
+    </p>
+
+    <a href="#about" class="landing-link">
+      A little about me <span aria-hidden="true">↓</span>
+    </a>
+  </div>
+</div>
+
+<!-- ABOUT ME: your talk photo and biography -->
+<section id="about" class="about-feature" aria-labelledby="about-title">
+  <div class="about-layout">
+
+    <figure class="about-photo">
+      <img
+        src="images/Rafael-profile_picture.jpg"
+        width="1520"
+        height="1012"
+        loading="lazy"
+      >
+    </figure>
+
+    <div class="about-content">
+      <p class="about-kicker">The person behind the research</p>
+
+      <h2 id="about-title">A little <em>about me.</em></h2>
+
+      <!-- Replace these placeholders with your biography. -->
+      <p class="about-intro">
+        Hi, I’m Rafael! [Introduce your current role and
+        where you work or study.]
+      </p>
+
+      <p>
+        [Describe your research interests in your own words:
+        what questions fascinate you, what you study, and
+        what you enjoy about your work.]
+      </p>
+
+      <p>
+        [Add something more personal: where you grew up,
+        how you arrived here, or what you enjoy outside research.]
+      </p>
+
+      <a href="#research" class="about-action">
+        Explore my research ↗
+      </a>
+
+      <!-- Once you upload cv.pdf to the repository's main folder,
+           you can replace the button above with:
+      <a href="cv.pdf" class="about-action">
+        Download my CV ↗
+      </a>
+      -->
     </div>
 
-    <section id="about" class="section-grid">
-      <div>
-        <p class="eyebrow">Introduction</p>
-        <h2>About me</h2>
-      </div>
-      <div class="body-copy">
-        <!-- Replace these paragraphs with your biography. -->
-        <p>
-          [Add your current position, institution, and a short
-          introduction to your scientific interests.]
-        </p>
-        <p>
-          [Tell visitors about your background, what brought you
-          to your research field, and a little about yourself
-          outside work.]
-        </p>
-
-        <!-- Upload cv.pdf, then remove the surrounding comment:
-        <a class="button" href="cv.pdf">Download my CV ↗</a>
-        -->
-      </div>
-    </section>
+  </div>
+</section>
 
     <section id="research" class="section-grid">
       <div>
