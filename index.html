@@ -28,67 +28,50 @@
   --line: #c7d1da;
 }
 
-  /* FLOATING ARIEL TRACKER */
-  #cursor-tracker {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 36px; /* Adjust size of the floating satellite here */
-    height: auto;
-    pointer-events: none; /* Allows clicks to pass right through it */
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    transition: transform 0.1s ease-out;
-    will-change: transform;
+  /* GENERAL */
+  * {
+    box-sizing: border-box;
   }
-  <script>
-    const tracker = document.getElementById('cursor-tracker');
-    
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let currentX = mouseX;
-    let currentY = mouseY;
   
-    // Track mouse position
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-  
-    // Smooth floating animation loop (trailing effect)
-    function animate() {
-      // Adjust the '0.15' value to make it follow faster (closer) or slower (more trailing)
-      currentX += (mouseX - currentX) * 0.15;
-      currentY += (mouseY - currentY) * 0.15;
-  
-      // Offset it slightly down and right from the actual arrow cursor like your photo
-      tracker.style.transform = `translate(${currentX + 18}px, ${currentY + 18}px) rotate(15deg)`;
-      
-      requestAnimationFrame(animate);
-    }
-  
-    animate();
-  </script>
-  
-  /* GENERAL & CUSTOM ARIEL CURSOR */
-  * { 
-    box-sizing: border-box; 
-    cursor: url('images/ariel_cursor.png') 16 16, auto !important;
+  html {
+    scroll-behavior: smooth;
   }
-  html { scroll-behavior: smooth; }
-
+  
   body {
     margin: 0;
     background: var(--paper);
     color: var(--navy);
     font-family: system-ui, sans-serif;
     line-height: 1.75;
-    cursor: url('images/ariel_cursor.png') 16 16, auto;
   }
-
-  a, button, .button, .scholar-link, .publications-toggle, .media-link { 
-    color: inherit; 
-    cursor: url('images/ariel_cursor.png') 16 16, pointer !important;
+  
+  a {
+    color: inherit;
+  }
+  
+  a,
+  button {
+    cursor: pointer;
+  }
+  
+  /* SATELLITE BESIDE THE POINTER */
+  #cursor-tracker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: auto;
+    pointer-events: none;
+    visibility: hidden;
+    z-index: 9999;
+    transition: transform .1s ease-out;
+    will-change: transform;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    #cursor-tracker {
+      transition: none;
+    }
   }
 
   a:focus-visible,
@@ -1409,6 +1392,40 @@ nav {
     }
   });
 </script>
-  <img id="cursor-tracker" src="images/ariel_cursor.png" alt="" aria-hidden="true">
+  <img
+    id="cursor-tracker"
+    src="images/ariel_cursor.png"
+    alt=""
+    aria-hidden="true"
+  >
+  
+  <script>
+    (() => {
+      const tracker = document.getElementById("cursor-tracker");
+  
+      if (!tracker) return;
+  
+      window.addEventListener("pointermove", (event) => {
+        if (event.pointerType !== "mouse") {
+          tracker.style.visibility = "hidden";
+          return;
+        }
+  
+        tracker.style.transform =
+          `translate(${event.clientX + 18}px, ${event.clientY + 18}px)
+           rotate(15deg)`;
+  
+        tracker.style.visibility = "visible";
+      });
+  
+      document.documentElement.addEventListener("pointerleave", () => {
+        tracker.style.visibility = "hidden";
+      });
+  
+      window.addEventListener("blur", () => {
+        tracker.style.visibility = "hidden";
+      });
+    })();
+  </script>
 </body>
 </html>
