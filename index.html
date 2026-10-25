@@ -180,7 +180,7 @@
         rgba(16, 30, 48, .52) 25%,
         rgba(16, 30, 48, .10) 55%
       ),
-      url("images/Rafael-talk.jpg") center 55% / cover no-repeat,
+      url("images/Rafael-background.png") center 55% / cover no-repeat,
       var(--navy);
   }
 
@@ -576,7 +576,79 @@
     font-size: .8rem;
     color: var(--muted);
   }
+/* ROLE & AFFILIATIONS */
+.landing-role {
+  margin: 14px auto;
+  color: var(--paper);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  letter-spacing: .03em;
+}
 
+.affiliations {
+  margin-bottom: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.affiliations-label {
+  margin: 0 0 10px;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.affiliations ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: .85rem;
+  line-height: 1.65;
+}
+
+.affiliations li + li {
+  margin-top: 6px;
+}
+
+/* CONTACT ICONS */
+.contact-links.contact-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.contact-icons a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 54px;
+  min-height: 70px;
+  margin: 0;
+  padding: 10px 4px;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.contact-icons svg {
+  display: block;
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+}
+
+.contact-icons span {
+  font-size: .68rem;
+  line-height: 1.2;
+  letter-spacing: .04em;
+}
+
+.contact-icons a:hover {
+  color: var(--rust);
+}
   /* PHONES & TABLETS */
   @media (max-width: 800px) {
     .about-panel,
@@ -618,7 +690,7 @@
       height: clamp(180px, 48vw, 320px);
       margin-bottom: 45px;
       background:
-        url("images/Rafael-talk.jpg") center 55% / cover no-repeat;
+        url("images/Rafael-background.png") center 55% / cover no-repeat;
     }
 
     .landing h1 span { display: block; }
@@ -660,7 +732,7 @@
     <div class="landing">
       <div class="wrap landing-content">
         <h1>Rafael <span>Rianço-Silva</span></h1>
-
+        <p class="landing-role">PhD Researcher in Astrophysics</p>
         <p class="landing-description">
           Explore my research, publications, and the
           questions that inspire my work.
@@ -681,6 +753,14 @@
         </figure>
 
         <div class="about-copy">
+        <div class="affiliations" aria-label="Academic affiliations">
+          <p class="affiliations-label">Based at</p>
+          <ul>
+            <li>Instituto de Astrofísica e Ciências do Espaço</li>
+            <li>Faculdade de Ciências da Universidade de Lisboa</li>
+            <li>University College London</li>
+          </ul>
+        </div>
           <p class="kicker">01 / About me</p>
           <h2 id="about-title">Hello, <em>I’m Rafael.</em></h2>
 
@@ -917,30 +997,67 @@
       <h2>Let’s talk.</h2>
     </div>
 
-    <div class="contact-links">
-      <a href="mailto:rdsilva@fc.ul.pt">
-        rdsilva@fc.ul.pt ↗
-      </a>
+    <div class="contact-links contact-icons">
 
-      <a href="mailto:rafael.silva@ucl.ac.uk">
-        rafael.silva@ucl.ac.uk ↗
+      <a href="mailto:rdsilva@fc.ul.pt"
+         aria-label="Email Rafael at Lisbon: rdsilva@fc.ul.pt"
+         title="rdsilva@fc.ul.pt">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="1"
+                fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="m3 6 9 7 9-7"
+                fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span>Lisbon</span>
       </a>
-
-      <a
-        href="https://www.linkedin.com/in/rafael-rianco-gomesdasilva/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LinkedIn ↗
+    
+      <a href="mailto:rafael.silva@ucl.ac.uk"
+         aria-label="Email Rafael at UCL: rafael.silva@ucl.ac.uk"
+         title="rafael.silva@ucl.ac.uk">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="1"
+                fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="m3 6 9 7 9-7"
+                fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span>UCL</span>
       </a>
-
-      <a
-        href="https://scholar.google.com/citations?user=qhsv2mwAAAAJ&amp;hl=en"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Google Scholar ↗
+    
+      <a href="https://www.linkedin.com/in/rafael-rianco-gomesdasilva/"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="LinkedIn profile (opens in a new tab)"
+         title="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor"
+            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM7.119 20.452H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z"/>
+        </svg>
       </a>
+    
+      <a href="https://scholar.google.com/citations?user=qhsv2mwAAAAJ&amp;hl=en"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Google Scholar profile (opens in a new tab)"
+         title="Google Scholar">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor"
+            d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14ZM12 0 0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5Z"/>
+        </svg>
+      </a>
+    
+      <a href="https://orcid.org/0000-0002-0586-9536"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="ORCID profile (opens in a new tab)"
+         title="ORCID">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="11" fill="currentColor"/>
+          <g fill="var(--sand)">
+            <circle cx="6.8" cy="6.8" r="1"/>
+            <path d="M6 9h1.6v9H6z"/>
+            <path fill-rule="evenodd"
+              d="M10 6h3.3a6 6 0 0 1 0 12H10V6Zm1.6 1.6v8.8h1.7a4.4 4.4 0 0 0 0-8.8h-1.7Z"/>
+          </g>
+        </svg>
+      </a>
+    
     </div>
   </div>
 </section>
