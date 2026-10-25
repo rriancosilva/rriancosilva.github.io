@@ -818,6 +818,83 @@ nav {
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
+
+/* CONTACT LAYOUT */
+#contact .contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  min-width: 0;
+}
+
+/* Envelope centred beside both addresses */
+#contact .contact-emails {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  max-width: 100%;
+}
+
+#contact .contact-emails > svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+#contact .contact-emails > div {
+  min-width: 0;
+}
+
+#contact .contact-emails a {
+  display: block;
+  padding: 5px 0;
+  color: var(--navy);
+  font-size: .95rem;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+#contact .contact-emails a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Three social icons underneath */
+#contact .contact-socials {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+#contact .contact-socials a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 82px;
+  padding: 8px 0;
+  color: var(--navy);
+  text-align: center;
+  text-decoration: none;
+}
+
+#contact .contact-socials svg {
+  display: block;
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+}
+
+#contact .contact-socials span {
+  font-size: .7rem;
+  line-height: 1.35;
+}
+
+#contact .contact-socials a:hover {
+  color: var(--rust);
+}
 </style>
 </head>
 
