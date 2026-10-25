@@ -839,6 +839,69 @@ a:focus-visible {
     grid-row: auto;
   }
 }
+/* Navy, teal, and warm white */
+:root {
+  --navy: #152b36;
+  --paper: #faf9f6;
+  --sand: #e4ece9;
+  --rust: #316c68;
+  --peach: #a9d6cd;
+  --muted: #586970;
+  --line: #d4dfdc;
+}
+
+.about-photo {
+  background: #dde7e4;
+}
+
+.about-panel {
+  box-shadow: 0 22px 60px #152b361a;
+}
+
+.research-card {
+  background: #e4eeea;
+  border-color: #42786f;
+}
+
+.research-card:nth-child(2) {
+  background: #e5edf2;
+  border-color: #56788e;
+}
+
+.research-card:nth-child(2)::before {
+  color: #56788e;
+}
+
+.media-card {
+  background: #fffefa;
+}
+
+.media-card.featured {
+  background: var(--sand);
+}
+
+.landing {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(21, 43, 54, 0.88) 0%,
+      rgba(21, 43, 54, 0.55) 25%,
+      rgba(21, 43, 54, 0.12) 55%
+    ),
+    url("images/Rafael-talk.jpg") center / cover no-repeat,
+    var(--navy);
+}
+
+a:focus-visible,
+.publications-toggle:focus-visible {
+  outline-color: #a9d6cd;
+}
+
+@media (max-width: 800px) {
+  .landing {
+    background: var(--navy);
+  }
+}
   </style>
 </head>
 
@@ -860,7 +923,6 @@ a:focus-visible {
   <main>
     <div class="landing">
       <div class="wrap landing-content">
-        <p class="kicker">Research · Discovery · Curiosity</p>
         <h1>Rafael <span>Rianço-Silva</span></h1>
 
         <p class="landing-description">
